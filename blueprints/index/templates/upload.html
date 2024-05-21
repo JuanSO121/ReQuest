@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Text and Image</title>
+</head>
+<body>
+<div class="container">
+    <h1>Upload Text and Image</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.text.label }}<br>
+            {{ form.text(size=32) }}<br>
+            {% for error in form.text.errors %}
+            <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.image.label }}<br>
+            {{ form.image(size=32) }}<br>
+            {% for error in form.image.errors %}
+            <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+</div>
+</body>
+</html>
