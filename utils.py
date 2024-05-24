@@ -57,14 +57,24 @@ def analyze_image(image_path):
     descriptions = [label.description for label in labels]
     return ', '.join(descriptions)
 
-def describe_image(image_path):
-    """Genera una descripción de la imagen usando Google Generative AI."""
-    image_description = analyze_image(image_path)
-    input_text = f"Dime qué ves en la foto: {image_description}"
-    response = model.generate_content(input_text)
-    print(response.text)
-    return response
+def detect_text(image_path):
+    """Usa Google Cloud Vision API para detectar texto en una imagen y devolver el texto detectado."""
+    client = vision.ImageAnnotatorClient()
 
+    with open(image_path, 'rb') as image_file:
+        content = image_file.read()
+
+    image = vision.Image(content=content)
+    response = client.text_detection(image=image)
+    texts = response.text_annotations
+
+    if texts:
+        detected_text = texts[0].description
+        print(f"Texto detectado en la imagen: {detected_text}")
+        return detected_text
+    else:
+        print("No se detectó texto en la imagen.")
+        return ""
 
 def prueba():
     input_text = "puedes recibir documentos de txt directos o los tengo que convertir a texto plano?"
@@ -80,4 +90,3 @@ if __name__ == "__main__":
     img_path = "uploads\\perro.jpg"
 
     print("Ruta de la imagen:", img_path)
-    describe_image(img_path)
