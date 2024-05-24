@@ -5,60 +5,110 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ReQuest</title>
+  
+  <!-- Preconnect para fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Importación de fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .box-sizing-border { box-sizing: border-box; }
   </style>
 </head>
 <body class="bg-[#09090F] text-[#FFFFFF]">
+  <!-- Contenedor principal -->
   <div class="flex flex-col items-center p-4 box-sizing-border w-full">
+    
+    <!-- Encabezado -->
     <div class="flex flex-col items-center w-full box-sizing-border p-4">
-      <div class="shadow-md rounded-3xl bg-[rgba(11,11,17,0.914)] mb-12 flex flex-row justify-between p-4 md:p-6 lg:w-3/4 w-full">
+      <div class="shadow-md rounded-3xl bg-[rgba(11,11,17,0.914)] mb-12 flex flex-row justify-between p-4 md:p6 lg:w-3/4 w-full">
+        
+        <!-- Logo y título -->
         <div class="flex flex-row items-center">
           <div class="inline-block font-['Oleo_Script'] text-2xl md:text-3xl text-white">
             ReQuest
-                </div>
-                <div class="rounded-[10px] bg-[url('static/uploads/logo.png')] bg-[50%_50%] bg-cover bg-no-repeat w-[101px] h-[94px]">
-                </div>
-              </div>
-              <div class="m-[35px_0_36px_0] flex flex-row justify-between w-[540.4px] h-[fit-content] box-sizing-border">
-                <button class="m-[0_11px_0_0] w-[96px] break-words font-['Montserrat'] font-semibold text-[18px] text-[#9238FF] bg-transparent border-none cursor-pointer focus:outline-none">
-                  Inicio
-                </button>
-                <button class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
-                  Sobre Nosotros
-                </button>
-                <button class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
-                  Proyectos
-                </button>
-                <button class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
-                  Servicios
-                </button>
-                <button class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
-                  Resume
-                </button>
-              </div>
-              
-              <button class="rounded-[35px] border-[1px_solid_#7A15FF] bg-[#7A15FF] m-[23.5px_0_24.5px_0] flex p-[12.5px_18.1px_12.5px_18px] box-sizing-border">
-                <span class="break-words font-['Montserrat'] font-medium text-[15px] text-[#FFFFFF]">
-                Contactanos
-                </span>
-              </button>
-            </div>
-
-            <div class="shadow-[0px_1px_3px_0px_rgba(0,0,5,0.5),0px_1px_2px_0px_rgba(0,0,5,0.3)] rounded-[25px] bg-[#121218] m-[0_0_0_3px] w-[775px] h-[494px]">
-            </div>
           </div>
-
+          <div class="rounded-[10px] bg-[url('static/uploads/logo.png')] bg-[50%_50%] bg-cover bg-no-repeat w-[101px] h-[94px]"></div>
         </div>
+        
+        <!-- Menú de navegación -->
+        <div class="m-[35px_0_36px_0] flex flex-row justify-between w-[540.4px] h-[fit-content] box-sizing-border">
+          <a href="home" class="m-[0_11px_0_0] w-[96px] break-words font-['Montserrat'] font-semibold text-[18px] text-[#9238FF] bg-transparent border-none cursor-pointer focus:outline-none">
+            Inicio
+          </a>
+          <button class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
+            Sobre Nosotros
+          </button>
+          <button class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
+            Proyectos
+          </button>
+          <button class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
+            Servicios
+          </button>
+          <button class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
+            Resume
+          </button>
+        </div>
+        
+        <!-- Botón de contacto -->
+        <button class="rounded-[35px] border-[1px_solid_#7A15FF] bg-[#7A15FF] m-[23.5px_0_24.5px_0] flex p-[12.5px_18.1px_12.5px_18px] box-sizing-border">
+          <span class="break-words font-['Montserrat'] font-medium text-[15px] text-[#FFFFFF]">
+            Contáctanos
+          </span>
+        </button>
       </div>
     </div>
-  </body>
+
+    <!-- Contenido principal -->
+    <div class="flex flex-col items-center w-full box-sizing-border p-4">
+      
+      <!-- Sección de subida de archivo -->
+      <label for="fileUpload" class="cursor-pointer flex flex-col items-center justify-center h-[200px] w-[300px] gap-5 p-6 border-2 border-dashed border-purple-500 bg-gray-800 rounded-lg shadow-[0px_48px_35px_-48px_rgba(128,90,213,0.7)]">
+        <div class="flex items-center justify-center">
+          <svg class="h-[80px] fill-purple-500" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z" fill=""></path> </g></svg>
+        </div>
+        <div class="flex items-center justify-center">
+          <span class="font-normal text-purple-500">Click to upload file</span>
+        </div>
+        <input id="fileUpload" type="file" class="hidden" onchange="showFileName(event)">
+      </label>
+      
+      <!-- Mostrar nombre del archivo -->
+      <div id="fileName" class="mt-4 text-center font-['Inter'] text-[16px] text-[#C1C1C1] hidden"></div>
+      
+      <!-- Texto de ayuda -->
+      <p class="mt-4 text-center font-['Inter'] text-[16px] text-[#C1C1C1]">
+        Suba un archivo para clasificar sus requerimientos.
+      </p>
+
+            <!-- Sección de descripción -->
+            <textarea id="description" rows="4" class="mt-4 p-2 w-full md:w-3/4 bg-gray-800 text-white border border-purple-500 rounded-lg" placeholder="Proporcione el patron de sintaxis que desea implementar en la clasificacion..."></textarea>
+
+
+      <!-- Botón de envío -->
+      <button class="overflow-hidden relative w-32 p-2 h-12 bg-black text-white border-none rounded-md text-xl font-bold cursor-pointer relative z-10 group mt-4">
+        Enviar
+        <span class="absolute w-36 h-32 -top-8 -left-2 bg-sky-200 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-500 duration-1000 origin-right"></span>
+        <span class="absolute w-36 h-32 -top-8 -left-2 bg-sky-400 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-700 duration-700 origin-right"></span>
+        <span class="absolute w-36 h-32 -top-8 -left-2 bg-sky-600 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-1000 duration-500 origin-right"></span>
+        <span class="group-hover:opacity-100 group-hover:duration-1000 duration-100 opacity-0 absolute top-2.5 left-6 z-10">Optimiza tu tiempo</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Script para mostrar nombre del archivo cargado -->
+  <script>
+    function showFileName(event) {
+      const fileNameDiv = document.getElementById('fileName');
+      fileNameDiv.textContent = event.target.files[0].name;
+      fileNameDiv.classList.remove('hidden');
+    }
+  </script>
+</body>
 </html>
-
-
