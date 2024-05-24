@@ -18,5 +18,17 @@ app.register_blueprint(index_bp)
 def home():
     return render_template('home.html')
 
+@app.route('/HU_imagen')
+def HU_imagen():
+    return render_template('HU_imagen.html')
+
+@app.route('/clasificacion')
+def clasificacion():
+    return render_template('clasificacion.html')
+
+@app.route('/priorizacion')
+def priorizacion():
+    return render_template('priorizacion.html')
+
 if __name__ =='__main__':   
     app.run(debug=True)
