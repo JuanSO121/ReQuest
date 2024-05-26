@@ -4,7 +4,7 @@ from google.oauth2 import service_account
 from docx import Document
 from fpdf import FPDF
 from dotenv import load_dotenv
-from gemini import geminiApi
+from .gemini import geminiApi
 
 load_dotenv()
 
@@ -32,7 +32,7 @@ class DocumentExtractor:
         
         pdf.output(pdf_path)
 
-    def extract_text_from_pdf(self, pdf_path="uploads/pdf/Auto.pdf"):
+    def extract_text_from_pdf(self, pdf_path):
         try:
             mime_type = 'application/pdf'
             name = self.client.processor_path(self.project_id, self.location, self.processor_id)
