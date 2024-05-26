@@ -8,7 +8,7 @@ from classe.document import DocumentExtractor
 
 index_bp = Blueprint("index", __name__, template_folder="templates")
 
-@index_bp.route("/", methods=['GET', 'POST'])
+@index_bp.route("/index", methods=['GET', 'POST'])
 def document():
     form = MyFormDocument()
 
