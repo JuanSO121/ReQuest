@@ -17,39 +17,45 @@
 </head>
 <body class="bg-[#09090F] text-[#FFFFFF]">
   <div class="flex flex-col items-center p-4 box-sizing-border w-full">
+    
+    <!-- Encabezado -->
     <div class="flex flex-col items-center w-full box-sizing-border p-4">
       <div class="shadow-md rounded-3xl bg-[rgba(11,11,17,0.914)] mb-12 flex flex-row justify-between p-4 md:p-6 lg:w-3/4 w-full">
+        
+        <!-- Logo y título -->
         <div class="flex flex-row items-center">
           <div class="inline-block font-['Oleo_Script'] text-2xl md:text-3xl text-white">
             ReQuest
-           </div>
-                <div class="rounded-[10px] bg-[url('static/uploads/logo.png')] bg-[50%_50%] bg-cover bg-no-repeat w-[101px] h-[94px]">
-                </div>
-              </div>
-              <div class="m-[35px_0_36px_0] flex flex-row justify-between w-[540.4px] h-[fit-content] box-sizing-border">
-                <a href="home" class="m-[0_11px_0_0] w-[96px] break-words font-['Montserrat'] font-semibold text-[18px] text-[#9238FF] bg-transparent border-none cursor-pointer focus:outline-none">
-                  Inicio
-                </a>
-                <button class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
-                  Sobre Nosotros
-                </button>
-                <button class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
-                  Proyectos
-                </button>
-                <button class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
-                  Servicios
-                </button>
-                <button class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
-                  Resume
-                </button>
-              </div>
-              
-              <button class="rounded-[35px] border-[1px_solid_#7A15FF] bg-[#7A15FF] m-[23.5px_0_24.5px_0] flex p-[12.5px_18.1px_12.5px_18px] box-sizing-border">
-                <span class="break-words font-['Montserrat'] font-medium text-[15px] text-[#FFFFFF]">
-                Contactanos
-                </span>
-              </button>
-            </div>
+          </div>
+          <div class="rounded-[10px] bg-[url('static/uploads/logo.png')] bg-[50%_50%] bg-cover bg-no-repeat w-[101px] h-[94px]"></div>
+        </div>
+        
+        <!-- Menú de navegación -->
+        <div class="m-[35px_0_36px_0] flex flex-row justify-between w-[540.4px] h-[fit-content] box-sizing-border">
+          <a href="home" class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
+            Inicio
+          </a>
+          <a href="HU_imagen" class="m-[0_11px_0_0] w-[96px] break-words font-['Montserrat'] font-semibold text-[18px] text-[#9238FF] bg-transparent border-none cursor-pointer focus:outline-none">
+            Imagen a HU
+          </a>
+          <a href="clasificacion" class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
+            Clasificación
+          </a>
+          <a href="priorizacion" class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
+            Priorización
+          </a>
+        </div>
+        
+        <!-- Botón de contacto -->
+        <button class="rounded-[35px] border-[1px_solid_#7A15FF] bg-[#7A15FF] m-[23.5px_0_24.5px_0] flex p-[12.5px_18.1px_12.5px_18px] box-sizing-border">
+          <span class="break-words font-['Montserrat'] font-medium text-[15px] text-[#FFFFFF]">
+            Contáctanos
+          </span>
+        </button>
+      </div>
+    </div>
+
+            
             <div class="m-[0_0_103px_20.7px] flex flex-col items-center w-[fit-content] box-sizing-border">
               <div class="m-[0_0_40px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
                 <div class="m-[0_14.4px_48px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
@@ -116,6 +122,7 @@
                 <!-- Imagen a Historias de Usuario -->
                 <a href="HU_imagen" class="relative flex w-80 flex-col rounded-xl bg-[#121218] bg-clip-border text-gray-700 shadow-md">
                   <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-[#9238FF] bg-clip-border text-white shadow-lg shadow-[#9238FF] bg-gradient-to-r from-[#9238FF] to-[#462399]">
+                    <img src="static/uploads/img_HU.jpg" alt="Imagen" class="absolute inset-0 w-full h-full object-cover"/>
                   </div>
                   <div class="p-6">
                     <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-[#9238FF] antialiased">
@@ -135,6 +142,7 @@
               <!-- Clasificación de Requisitos -->
                 <a href="clasificacion" class="relative flex w-80 flex-col rounded-xl bg-[#121218] bg-clip-border text-gray-700 shadow-md">
                   <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-[#9238FF] bg-clip-border text-white shadow-lg shadow-[#9238FF] bg-gradient-to-r from-[#9238FF] to-[#462399]">
+                    <img src="static/uploads/clasificacion.jpg" alt="Imagen" class="absolute inset-0 w-full h-full object-cover"/>
                   </div>
                   <div class="p-6">
                     <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-[#9238FF] antialiased">
@@ -156,6 +164,7 @@
               
                 <a href="priorizacion" class="relative flex w-80 flex-col rounded-xl bg-[#121218] bg-clip-border text-gray-700 shadow-md">
                   <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-[#9238FF] bg-clip-border text-white shadow-lg shadow-[#9238FF] bg-gradient-to-r from-[#9238FF] to-[#462399]">
+                    <img src="static/uploads/priorizacion.jpg" alt="Imagen" class="absolute inset-0 w-full h-full object-cover"/>
                   </div>
                   <div class="p-6">
                     <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-[#9238FF] antialiased">
