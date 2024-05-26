@@ -4,6 +4,7 @@ from google.oauth2 import service_account
 from docx import Document
 from fpdf import FPDF
 from dotenv import load_dotenv
+from gemini import geminiApi
 
 load_dotenv()
 
@@ -16,7 +17,7 @@ class DocumentExtractor:
         self.processor_id = os.getenv("PROCESSOR_ID")
         self.project_id = os.getenv("PROJECT_ID")
         self.endpoint = os.getenv("ENDPOINT")
-        self.information = None
+        self.geminiApi = geminiApi()
         
 
     def convert_word_to_pdf(self, docx_path, pdf_path):
@@ -31,7 +32,7 @@ class DocumentExtractor:
         
         pdf.output(pdf_path)
 
-    def extract_text_from_pdf(self, pdf_path):
+    def extract_text_from_pdf(self, pdf_path="uploads/pdf/Auto.pdf"):
         try:
             mime_type = 'application/pdf'
             name = self.client.processor_path(self.project_id, self.location, self.processor_id)
@@ -44,18 +45,15 @@ class DocumentExtractor:
             request = {"name": name, "raw_document": raw_document}
             response = self.client.process_document(request=request)
             document = response.document
-            self.information = document
-            
-            return document.text
+            text = document.text
+            self.geminiApi.text_document(text) 
         except Exception as e:
             print(e)
             return None
+
 """
-if __name__ == '__main__':
-    
-    extractor = DocumentExtractor()
+extract = DocumentExtractor()
 
-    pdf_file_path = 'uploads/pdf/Auto.pdf'
-
-    text = extractor.extract_text_from_pdf(pdf_file_path)
-    print(text)"""
+extract.extract_text_from_pdf()
+print(extract.geminiApi.text)
+"""

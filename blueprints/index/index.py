@@ -19,8 +19,6 @@ def hello():
 def hello_name(name):
     return f"Hello {name}!"
 
-api_key = "GEMINI_API_KEY"
-
 
 @index_bp.route("/HU", methods=['GET', 'POST'])
 def getanswerd():
@@ -34,7 +32,7 @@ def getanswerd():
     image_path = os.path.join(app.config['UPLOADED_PHOTOS_DEST'], filename)
     print("path",image_path)
 
-    api = geminiApi(api_key)  
+    api = geminiApi()  
     historias_usuario = api.generate_user_story(image_path)
 
     return f"Texto: {text}.User Stories: {historias_usuario}"
