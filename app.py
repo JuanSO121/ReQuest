@@ -6,8 +6,12 @@ app = Flask(__name__)
 
 # Seguridad de información
 app.config['SECRET_KEY'] = 'your_secret_key'
-# Carpetas Imagenes
-app.config['UPLOADED_PHOTOS_DEST'] = 'uploads'
+#Imgae
+app.config['UPLOADED_PHOTOS_DEST'] = 'uploads/imagenes'
+#Carpeta PDF
+app.config['UPLOADED_DOCUMENTS_DEST'] = 'uploads/pdf'
+
+
 # Imagenes Confi
 configure_extensions(app)
 # Blueprints modularizar codigo

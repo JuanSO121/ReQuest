@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Text and Image</title>
+    <title>Upload Text and Document</title>
 </head>
 <body>
 <div class="container">
-    <h1>Upload Text and Image</h1>
+    <h1>Upload Text and Document</h1>
     <form method="POST" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <div>
@@ -18,9 +18,9 @@
             {% endfor %}
         </div>
         <div>
-            {{ form.image.label }}<br>
-            {{ form.image(size=32) }}<br>
-            {% for error in form.image.errors %}
+            {{ form.document.label }}<br>
+            {{ form.document(size=32) }}<br>
+            {% for error in form.document.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}
         </div>
