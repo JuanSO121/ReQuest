@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReQuest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .box-sizing-border { box-sizing: border-box; }
+  </style>
+</head>
+<body class="bg-[#09090F] text-[#FFFFFF]">
+  <div class="flex flex-col items-center p-4 box-sizing-border w-full">
+    
+    <!-- Encabezado -->
+    <div class="flex flex-col items-center w-full box-sizing-border p-4">
+      <div class="shadow-md rounded-3xl bg-[rgba(11,11,17,0.914)] mb-12 flex flex-row justify-between p-4 md:p-6 lg:w-3/4 w-full">
+        
+        <!-- Logo y título -->
+        <div class="flex flex-row items-center">
+          <div class="inline-block font-['Oleo_Script'] text-2xl md:text-3xl text-white">
+            ReQuest
+          </div>
+          <div class="rounded-[10px] bg-[url('static/uploads/logo.png')] bg-[50%_50%] bg-cover bg-no-repeat w-[101px] h-[94px]"></div>
+        </div>
+        
+        <!-- Menú de navegación -->
+        <div class="m-[35px_0_36px_0] flex flex-row justify-between w-[540.4px] h-[fit-content] box-sizing-border">
+          <a href="home" class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
+            Inicio
+          </a>
+          <a href="HU_imagen" class="m-[0_11px_0_0] w-[96px] break-words font-['Montserrat'] font-semibold text-[18px] text-[#9238FF] bg-transparent border-none cursor-pointer focus:outline-none">
+            Imagen a HU
+          </a>
+          <a href="clasificacion" class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
+            Clasificación
+          </a>
+          <a href="priorizacion" class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
+            Priorización
+          </a>
+        </div>
+        
+        <!-- Botón de contacto -->
+        <button class="rounded-[35px] border-[1px_solid_#7A15FF] bg-[#7A15FF] m-[23.5px_0_24.5px_0] flex p-[12.5px_18.1px_12.5px_18px] box-sizing-border">
+          <span class="break-words font-['Montserrat'] font-medium text-[15px] text-[#FFFFFF]">
+            Contáctanos
+          </span>
+        </button>
+      </div>
+    </div>
+
+            
+            <div class="m-[0_0_103px_20.7px] flex flex-col items-center w-[fit-content] box-sizing-border">
+              <div class="m-[0_0_40px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
+                <div class="m-[0_14.4px_48px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
+                  <span class="break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#F7F7F8]">
+                  Automatizacion
+                  </span>
+                  <span class="m-[0_0.6px_0_0] break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#BC86FF]">
+                  Workflow
+                  </span>
+                </div>
+                <div class="flex flex-col items-center w-[fit-content] box-sizing-border">
+                  <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#C9CCD2]">
+                  Simplify website planning with our intuitive design tool. Bring your ideas to life
+                  </span>
+                  <span class="m-[0_2.8px_0_0] break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#C9CCD2]">
+                  effortlessly and create stunning visuals.
+                  </span>
+                </div>
+              </div>
+              <div class="m-[0_12.7px_0_0] flex w-[311.9px] box-sizing-border">
+                <div class="shadow-[inset_0px_1px_0px_0px_rgba(255,255,255,0.2),0px_1px_3px_0px_rgba(9,9,15,0.5),0px_1px_2px_0px_rgba(9,9,15,0.3)] rounded-[8px] bg-[#7A15FF] m-[0_12px_0_0] flex items-center justify-center p-[10px_3.7px_10px_0] w-[124px]">
+                  <button class="break-words font-inter font-medium text-sm leading-[1.5] text-[#F7F7F8]">
+                    Get Started
+                  </button>
+                </div>
+                <div class="shadow-[0px_1px_3px_0px_rgba(9,9,15,0),0px_1px_2px_0px_rgba(9,9,15,0),inset_0px_1px_0px_0px_rgba(255,255,255,0)] rounded-[8px] flex items-center justify-between p-[10px_0] w-[176px]">
+                  <div class="flex items-center">
+                    <button class="break-words font-inter font-medium text-[13.5px] leading-[1.481] text-[#C9CCD2]">
+                      See how it works
+                    </button>
+                  </div>
+                  <button class="flex items-center w-[7.5px] h-[13.8px]">
+                    <img class="w-[7.5px] h-[13.8px]" src="static/uploads/vectors/vector_1_x2.svg" alt="Arrow Icon" />
+                  </button>
+                </div>
+              </div>
+              
+            </div>
+            <div class="shadow-[0px_1px_3px_0px_rgba(0,0,5,0.5),0px_1px_2px_0px_rgba(0,0,5,0.3)] rounded-[25px] bg-[#121218] m-[0_0_0_3px] w-[775px] h-[494px]">
+            </div>
+          </div>
+          <div class="bg-[#09090F] flex p-[176px_128.5px_0_128.5px] box-sizing-border">
+            <div class="bg-[#09090F] flex flex-col items-center p-[96px_24px_96px_24px] box-sizing-border">
+              <div class="m-[0_1.3px_64px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
+                <div class="m-[0_3.3px_24px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
+                  <span class="break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#F7F7F8]">
+                  Nuestros Procesos 
+                  </span>
+                  <span class="m-[0_0_0_1.2px] break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#BC86FF]">
+                  Automatizados
+                  </span>
+                </div>
+                <div class="m-[0_0_0_17.7px] flex flex-col items-center w-[fit-content] box-sizing-border">
+                  <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
+                  Explore our essential tools for seamless website planning and design. Elevate
+                  </span>
+                  <span class="m-[0_56.5px_0_53.4px] break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
+                  your workflow with intuitive features and powerful capabilities.
+                  </span>
+                </div>
+              </div>
+              <div class="flex flex-row gap-[0_24px] w-[fit-content] box-sizing-border">
+
+                <!-- Imagen a Historias de Usuario -->
+                <a href="HU_imagen" class="relative flex w-80 flex-col rounded-xl bg-[#121218] bg-clip-border text-gray-700 shadow-md">
+                  <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-[#9238FF] bg-clip-border text-white shadow-lg shadow-[#9238FF] bg-gradient-to-r from-[#9238FF] to-[#462399]">
+                    <img src="static/uploads/img_HU.jpg" alt="Imagen" class="absolute inset-0 w-full h-full object-cover"/>
+                  </div>
+                  <div class="p-6">
+                    <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-[#9238FF] antialiased">
+                      Imagen a Historias de Usuario
+                    </h5>
+                    <p class="block font-sans text-base font-light leading-relaxed text-white antialiased">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis ligula. 
+                  </p>
+                  
+                  </div>
+                  <div class="p-6 pt-0">
+                    <button data-ripple-light="true" type="button" class="select-none rounded-lg bg-[#9238FF] py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-[#9238FF]/20 transition-all hover:shadow-lg hover:shadow-[#9238FF]/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                      Read More
+                    </button>
+                  </div>
+                </a>
+              <!-- Clasificación de Requisitos -->
+                <a href="clasificacion" class="relative flex w-80 flex-col rounded-xl bg-[#121218] bg-clip-border text-gray-700 shadow-md">
+                  <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-[#9238FF] bg-clip-border text-white shadow-lg shadow-[#9238FF] bg-gradient-to-r from-[#9238FF] to-[#462399]">
+                    <img src="static/uploads/clasificacion.jpg" alt="Imagen" class="absolute inset-0 w-full h-full object-cover"/>
+                  </div>
+                  <div class="p-6">
+                    <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-[#9238FF] antialiased">
+                      Clasificación de Requisitos
+                    </h5>
+                    <p class="block font-sans text-base font-light leading-relaxed text-white antialiased">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis ligula. 
+                  </p>
+                  
+                  </div>
+                  <div class="p-6 pt-0">
+                    <button data-ripple-light="true" type="button" class="select-none rounded-lg bg-[#9238FF] py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-[#9238FF]/20 transition-all hover:shadow-lg hover:shadow-[#9238FF]/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                      Read More
+                    </button>
+                  </div>
+                </a>
+
+                <!-- Priorización de Requisitos -->
+              
+                <a href="priorizacion" class="relative flex w-80 flex-col rounded-xl bg-[#121218] bg-clip-border text-gray-700 shadow-md">
+                  <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-[#9238FF] bg-clip-border text-white shadow-lg shadow-[#9238FF] bg-gradient-to-r from-[#9238FF] to-[#462399]">
+                    <img src="static/uploads/priorizacion.jpg" alt="Imagen" class="absolute inset-0 w-full h-full object-cover"/>
+                  </div>
+                  <div class="p-6">
+                    <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-[#9238FF] antialiased">
+                      Priorización de Requisitos
+                    </h5>
+                    <p class="block font-sans text-base font-light leading-relaxed text-white antialiased">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis ligula. 
+                  </p>
+                  
+                  </div>
+                  <div class="p-6 pt-0">
+                    <button data-ripple-light="true" type="button" class="select-none rounded-lg bg-[#9238FF] py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-[#9238FF]/20 transition-all hover:shadow-lg hover:shadow-[#9238FF]/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                      Read More
+                    </button>
+                  </div>
+                </a>
+              </div>
+            </div>
+                    
+            </div>
+          </div>
+          <div class="bg-[#09090F] flex flex-col items-center p-[96px_4px_0_0] w-[1425px] box-sizing-border">
+            <div class="m-[0_0_107px_6px] flex flex-col items-center w-[fit-content] box-sizing-border">
+              <div class="m-[0_0_64px_17.4px] flex flex-col items-center w-[fit-content] box-sizing-border">
+                <div class="m-[0_28.3px_24px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
+                  <span class="break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#F7F7F8]">
+                  Your Website Planning 
+                  </span>
+                  <span class="m-[0_0_0_7.6px] break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#7A15FF]">
+                  Solution
+                  </span>
+                </div>
+                <div class="flex flex-col items-center w-[fit-content] box-sizing-border">
+                  <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
+                  Unleash creativity effortlessly with our dynamic whiteboard. Collaborate seamlessly and
+                  </span>
+                  <span class="m-[0_7.1px_0_0] break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
+                  visualize ideas in real-time with intuitive tools.
+                  </span>
+                </div>
+              </div>
+              <div class="flex box-sizing-border">
+                <div class="shadow-[inset_0px_1px_0px_0px_rgba(255,255,255,0.05),0px_1px_3px_0px_rgba(0,0,5,0.9),0px_1px_2px_0px_rgba(0,0,5,0.7)] rounded-[8px] bg-[#09090F] flex flex-row p-[48px_103px_48px_48px] box-sizing-border">
+                  <div class="rounded-l-[6px] m-[0_79.3px_0_0] flex flex-col items-center box-sizing-border">
+                    <div class="m-[0_8.8px_144.3px_0] flex flex-col w-[fit-content] box-sizing-border">
+                      <div class="shadow-[inset_0px_1px_0px_0px_rgba(255,255,255,0.05)] rounded-[99999px] bg-[#28282E] m-[0_0_15.5px_0] flex self-start p-[2px_14.1px_2px_12px] box-sizing-border">
+                        <span class="break-words font-['Inter'] font-medium text-[13.5px] leading-[1.481] text-[#C9CCD2]">
+                        Navigate
+                        </span>
+                      </div>
+                      <div class="m-[0_0_16.5px_0] flex self-start box-sizing-border">
+                        <span class="break-words font-['Inter'] font-semibold text-[46.3px] leading-[1.21] text-[#F7F7F8]">
+                        Sitemaps
+                        </span>
+                      </div>
+                      <div class="flex flex-col w-[fit-content] box-sizing-border">
+                        <span class="m-[0_9.5px_0_0] break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
+                        Craft structured sitemaps effortlessly, simplifying
+                        </span>
+                        <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
+                        navigation and enhancing user experience for your
+                        </span>
+                        <span class="self-start break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
+                        website projects.
+                        </span>
+                      </div>
+                    </div>
+                    <div class="flex flex-col items-center w-[fit-content] box-sizing-border">
+                      <div class="m-[0_0_34.3px_0] flex flex-row w-[fit-content] box-sizing-border">
+                        <div class="m-[0.7px_56.8px_0_0] flex flex-col box-sizing-border">
+                          <div class="m-[0_2.3px_11px_2.3px] flex self-start w-[19.5px] h-[18px] box-sizing-border">
+                            <img class="w-[19.5px] h-[18px]" src="static/uploads/vectors/vector_4_x2.svg" />
+                          </div>
+                          <div class="m-[0_0_8px_0] flex box-sizing-border">
+                            <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
+                            Key content mapping
+                            </span>
+                          </div>
+                          <div class="m-[0_3.2px_0_0] flex flex-col w-[fit-content] box-sizing-border">
+                            <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            Map essential content
+                            </span>
+                            <span class="break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            efficiently for streamlined
+                            </span>
+                            <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            project organization.
+                            </span>
+                          </div>
+                        </div>
+                        <div class="m-[0_0_20px_0] flex flex-col box-sizing-border">
+                          <div class="m-[0_3px_11px_3px] flex self-start w-[18.8px] h-[18.7px] box-sizing-border">
+                            <img class="w-[18.8px] h-[18.7px]" src="static/uploads/vectors/vector_x2.svg" />
+                          </div>
+                          <div class="m-[0_0_8px_0] flex self-start box-sizing-border">
+                            <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
+                            Final edit control
+                            </span>
+                          </div>
+                          <div class="flex flex-col w-[fit-content] box-sizing-border">
+                            <span class="break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            Control the ultimate edit for
+                            </span>
+                            <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            project perfection.
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="m-[0_22.3px_0_0] flex flex-row w-[fit-content] box-sizing-border">
+                        <div class="m-[0_55px_0_0] flex flex-col box-sizing-border">
+                          <div class="m-[0_2.3px_10.2px_2.3px] flex self-start w-[19.5px] h-[19.5px] box-sizing-border">
+                            <img class="w-[19.5px] h-[19.5px]" src="static/uploads/vectors/vector_2_x2.svg" />
+                          </div>
+                          <div class="m-[0_0_8px_0] flex self-start box-sizing-border">
+                            <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
+                            Optimize Planning
+                            </span>
+                          </div>
+                          <div class="flex flex-col w-[fit-content] box-sizing-border">
+                            <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            Enhance plans for
+                            </span>
+                            <span class="break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            streamlined execution and
+                            </span>
+                            <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            success.
+                            </span>
+                          </div>
+                        </div>
+                        <div class="m-[0.8px_0_0_0] flex flex-col box-sizing-border">
+                          <div class="m-[0_3px_8.8px_3px] flex self-start w-[20.2px] h-[20.2px] box-sizing-border">
+                            <img class="w-[20.2px] h-[20.2px]" src="static/uploads/vectors/vector_3_x2.svg" />
+                          </div>
+                          <div class="m-[0_10.7px_8px_0] flex box-sizing-border">
+                            <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
+                            Intelligent tagging
+                            </span>
+                          </div>
+                          <div class="flex flex-col w-[fit-content] box-sizing-border">
+                            <span class="break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            Efficiently organize with
+                            </span>
+                            <span class="m-[0_5.9px_0_0] break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            smart, intuitive tagging
+                            </span>
+                            <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            solutions.
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="shadow-[inset_1px_1px_0px_0px_rgba(255,255,255,0.05),0px_0px_0px_1px_rgba(9,9,15,0.698)] rounded-l-[8px] bg-[#212127] w-[503px] h-[606px]">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-[#09090F] flex flex-col items-center p-[96px_0_0_0] w-[1425px] box-sizing-border">
+              <div class="m-[0_0_20px_0] flex flex-col items-center w-[988px] box-sizing-border">
+                <div class="m-[0_0_84px_17.9px] flex flex-col items-center w-[fit-content] box-sizing-border">
+                  <div class="m-[0_17.4px_24px_2.3px] flex box-sizing-border">
+                    <span class="break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#F7F7F8]">
+                    Frequently Asked Questions
+                    </span>
+                  </div>
+                  <div class="flex box-sizing-border">
+                    <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
+                    Seamlessly use your preferred tools for unified work, start to finish.
+                    </span>
+                  </div>
+                </div>
+                <div class="flex flex-col items-center w-[988px] box-sizing-border">
+                  <div class="m-[0_0_20px_0] flex flex-col items-center w-[988px] box-sizing-border">
+                    <div class="m-[0_28px_18px_24px] flex flex-row justify-between w-[936px] box-sizing-border">
+                      <div class="flex box-sizing-border">
+                        <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
+                        What payment methods do you accept?
+                        </span>
+                      </div>
+                      <div class="relative m-[4px_0_4px_0] flex p-[7px_0_7px_0] w-[16px] h-[16px] box-sizing-border">
+                        <div class="bg-[#45454F] relative w-[16px] h-[2px]">
+                        </div>
+                        <div class="bg-[#45454F] absolute right-[7px] bottom-[0px] w-[2px] h-[16px]">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col items-center w-[988px] box-sizing-border">
+                      <div class="bg-[#000005] w-[988px] h-[1px]">
+                      </div>
+                      <div class="bg-[#212127] w-[988px] h-[1px]">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="m-[0_0_20px_0] flex flex-col items-center w-[988px] box-sizing-border">
+                    <div class="m-[0_28px_18px_24px] flex flex-row justify-between w-[936px] box-sizing-border">
+                      <div class="flex box-sizing-border">
+                        <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
+                        How do I reset my password?
+                        </span>
+                      </div>
+                      <div class="relative m-[4px_0_4px_0] flex p-[7px_0_7px_0] w-[16px] h-[16px] box-sizing-border">
+                        <div class="bg-[#45454F] relative w-[16px] h-[2px]">
+                        </div>
+                        <div class="bg-[#45454F] absolute right-[7px] bottom-[0px] w-[2px] h-[16px]">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col items-center w-[988px] box-sizing-border">
+                      <div class="bg-[#000005] w-[988px] h-[1px]">
+                      </div>
+                      <div class="bg-[#212127] w-[988px] h-[1px]">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="m-[0_0_20px_0] flex flex-col items-center w-[988px] box-sizing-border">
+                    <div class="m-[0_28px_18px_24px] flex flex-row justify-between w-[936px] box-sizing-border">
+                      <div class="flex box-sizing-border">
+                        <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
+                        Can I cancel my subscription at any time?
+                        </span>
+                      </div>
+                      <div class="relative m-[4px_0_4px_0] flex p-[7px_0_7px_0] w-[16px] h-[16px] box-sizing-border">
+                        <div class="bg-[#45454F] relative w-[16px] h-[2px]">
+                        </div>
+                        <div class="bg-[#45454F] absolute right-[7px] bottom-[0px] w-[2px] h-[16px]">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col items-center w-[988px] box-sizing-border">
+                      <div class="bg-[#000005] w-[988px] h-[1px]">
+                      </div>
+                      <div class="bg-[#212127] w-[988px] h-[1px]">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="m-[0_0_20px_0] flex flex-col items-center w-[988px] box-sizing-border">
+                    <div class="m-[0_28px_18px_24px] flex flex-row justify-between w-[936px] box-sizing-border">
+                      <div class="flex box-sizing-border">
+                        <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
+                        Do you offer refunds for unused subscription time?
+                        </span>
+                      </div>
+                      <div class="relative m-[4px_0_4px_0] flex p-[7px_0_7px_0] w-[16px] h-[16px] box-sizing-border">
+                        <div class="bg-[#45454F] relative w-[16px] h-[2px]">
+                        </div>
+                        <div class="bg-[#45454F] absolute right-[7px] bottom-[0px] w-[2px] h-[16px]">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col items-center w-[988px] box-sizing-border">
+                      <div class="bg-[#000005] w-[988px] h-[1px]">
+                      </div>
+                      <div class="bg-[#212127] w-[988px] h-[1px]">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="m-[0_0_20px_0] flex flex-col items-center w-[988px] box-sizing-border">
+                    <div class="m-[0_28px_18px_24px] flex flex-row justify-between w-[936px] box-sizing-border">
+                      <div class="flex box-sizing-border">
+                        <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
+                        Is my data backed up regularly?
+                        </span>
+                      </div>
+                      <div class="relative m-[4px_0_4px_0] flex p-[7px_0_7px_0] w-[16px] h-[16px] box-sizing-border">
+                        <div class="bg-[#45454F] relative w-[16px] h-[2px]">
+                        </div>
+                        <div class="bg-[#45454F] absolute right-[7px] bottom-[0px] w-[2px] h-[16px]">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col items-center w-[988px] box-sizing-border">
+                      <div class="bg-[#000005] w-[988px] h-[1px]">
+                      </div>
+                      <div class="bg-[#212127] w-[988px] h-[1px]">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="m-[0_0_20px_0] flex flex-col items-center w-[988px] box-sizing-border">
+                    <div class="m-[0_28px_18px_24px] flex flex-row justify-between w-[936px] box-sizing-border">
+                      <div class="flex box-sizing-border">
+                        <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
+                        How do I invite collaborators to my projects?
+                        </span>
+                      </div>
+                      <div class="relative m-[4px_0_4px_0] flex p-[7px_0_7px_0] w-[16px] h-[16px] box-sizing-border">
+                        <div class="bg-[#45454F] relative w-[16px] h-[2px]">
+                        </div>
+                        <div class="bg-[#45454F] absolute right-[7px] bottom-[0px] w-[2px] h-[16px]">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col items-center w-[988px] box-sizing-border">
+                      <div class="bg-[#000005] w-[988px] h-[1px]">
+                      </div>
+                      <div class="bg-[#212127] w-[988px] h-[1px]">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-col items-center w-[988px] box-sizing-border">
+                    <div class="m-[0_28px_18px_24px] flex flex-row justify-between w-[936px] box-sizing-border">
+                      <div class="flex box-sizing-border">
+                        <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
+                        Are there any discounts available for educational institutions?
+                        </span>
+                      </div>
+                      <div class="relative m-[4px_0_4px_0] flex p-[7px_0_7px_0] w-[16px] h-[16px] box-sizing-border">
+                        <div class="bg-[#45454F] relative w-[16px] h-[2px]">
+                        </div>
+                        <div class="bg-[#45454F] absolute right-[7px] bottom-[0px] w-[2px] h-[16px]">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col items-center w-[988px] box-sizing-border">
+                      <div class="bg-[#000005] w-[988px] h-[1px]">
+                      </div>
+                      <div class="bg-[#212127] w-[988px] h-[1px]">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-[rgba(9,9,15,0.3)] flex flex-col md:flex-row p-16 md:p-24 box-sizing-border w-full justify-center items-center md:items-start">
+                <div class="m-4 flex flex-col box-sizing-border">
+                  <div class="mb-6 flex self-start box-sizing-border">
+                    <span class="break-words font-['Inter'] font-normal text-sm text-[#94989E]">Product</span>
+                  </div>
+                  <div class="flex flex-col box-sizing-border">
+                    <div class="mb-4 flex self-start box-sizing-border">
+                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Sitemap</span>
+                    </div>
+                    <div class="mb-4 flex box-sizing-border">
+                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Wireframes</span>
+                    </div>
+                    <div class="mb-4 flex box-sizing-border">
+                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Whiteboard</span>
+                    </div>
+                    <div class="flex self-start box-sizing-border">
+                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Pricing</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="m-4 flex flex-col box-sizing-border">
+                  <div class="mb-6 flex self-start box-sizing-border">
+                    <span class="break-words font-['Inter'] font-normal text-sm text-[#94989E]">Developers</span>
+                  </div>
+                  <div class="flex flex-col box-sizing-border">
+                    <div class="mb-4 flex box-sizing-border">
+                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Community</span>
+                    </div>
+                    <div class="mb-4 flex box-sizing-border">
+                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Discord server</span>
+                    </div>
+                    <div class="mb-4 flex box-sizing-border">
+                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Help center</span>
+                    </div>
+                    <div class="flex self-start box-sizing-border">
+                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Changelog</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="m-4 flex flex-col items-center box-sizing-border">
+                  <div class="mb-6 flex box-sizing-border">
+                    <span class="break-words font-['Inter'] font-normal text-sm text-[#94989E]">Company</span>
+                  </div>
+                  <div class="flex flex-col box-sizing-border">
+                    <div class="mb-4 flex self-start box-sizing-border">
+                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">About</span>
+                    </div>
+                    <div class="mb-4 flex self-start box-sizing-border">
+                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Contact</span>
+                    </div>
+                    <div class="mb-4 flex self-start box-sizing-border">
+                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Careers</span>
+                    </div>
+                    <div class="mb-4 flex self-start box-sizing-border">
+                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Blog</span>
+                    </div>
+                    <div class="flex box-sizing-border">
+                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Testimonials</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="m-4 flex flex-col box-sizing-border">
+                  <div class="mb-6 flex self-start box-sizing-border">
+                    <span class="break-words font-['Inter'] font-normal text-sm text-[#94989E]">Social</span>
+                  </div>
+                  <div class="flex flex-col items-center box-sizing-border">
+                    <div class="mb-4 flex box-sizing-border">
+                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Instagram</span>
+                    </div>
+                    <div class="mb-4 flex box-sizing-border">
+                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Linkedin</span>
+                    </div>
+                    <div class="mb-4 flex box-sizing-border">
+                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Twitter</span>
+                    </div>
+                    <div class="flex box-sizing-border">
+                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Facebook</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
