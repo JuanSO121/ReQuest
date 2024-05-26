@@ -17,7 +17,7 @@ class geminiApi:
     
     def generate_user_story(self, image_path):
         imagen = Image.open(image_path)
-        prompt = f"dame las historias de usuario de este producto en formato de como, quiero, para"
+        prompt = f"Genera maximo 3 historias de usuario de este producto en formato de como, quiero, para"
         response = self.model.generate_content([prompt, imagen])
         return response.text
 
