@@ -54,6 +54,14 @@ class DocumentExtractor:
 """
 extract = DocumentExtractor()
 
-extract.extract_text_from_pdf()
+docx_path = 'uploads/pdf/Uno.docx'
+pdf_path = 'uploads/pdf/Uno_converted.pdf'
+
+# Convertir DOCX a PDF
+extract.convert_word_to_pdf(docx_path, pdf_path)
+
+# Procesar el archivo PDF convertido
+extract.extract_text_from_pdf(pdf_path)
 print(extract.geminiApi.text)
+
 """
