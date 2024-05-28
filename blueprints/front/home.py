@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, current_app, flash, redirect, url_for, send_file
 from form import MyFormDocument
 from werkzeug.utils import secure_filename
-from extensions import photos
 import os
 from io import BytesIO
 

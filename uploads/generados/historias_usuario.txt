@@ -1,2 +1,0 @@
-Como usuario, quiero poder subir imágenes para que se generen historias automáticamente.
-Como administrador, quiero revisar las historias generadas para asegurar la calidad.

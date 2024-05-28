@@ -12,7 +12,9 @@ app.config['UPLOADED_PHOTOS_DEST'] = 'uploads/imagenes'
 # Carpetas Documentos
 app.config['UPLOADED_DOCUMENTS_DEST'] = 'uploads/pdf'
 
-app.config['GENERATED_UPLOADS_FOLDER'] = 'C:\\Users\\sanch\\Desktop\\Home\\ReQuest\\uploads\\generados'
+app.config['UPLOADED_WORD_DEST'] = 'uploads/word'
+
+app.config['GENERATED_UPLOADS_FOLDER'] = 'uploads/generados'
 
 # Imágenes Confi
 configure_extensions(app)
