@@ -35,21 +35,25 @@ def document():
             
             # Genera historia de usuario
             api = geminiApi()
+            api.configure()
             user_story = api.generate_user_story(image_path)
             
             return f'Texto: {text}. Filename: {filename}. Historia de usuario: {user_story}'
         
-        elif file_extension in ['pdf', 'doc', 'docx', 'txt']:
+        elif file_extension in ['docx']:
             
 
-            document_path = os.path.join(current_app.config['UPLOADED_DOCUMENTS_DEST'], filename)
+            document_path = os.path.join(current_app.config['UPLOADED_WORD_DEST'], filename)
 
             pdf_path = os.path.join(current_app.config['UPLOADED_DOCUMENTS_DEST'], new_filename)
 
             file.save(document_path)
             file.save(pdf_path)
             
-            process_extension(file_extension, document_path,pdf_path)
+            extract = process_extension(file_extension, document_path,pdf_path)
+            extract.geminiApi.configure_2()
+            text = extract.geminiApi.generate_user_story_info(extract.geminiApi.text_document)
+            print(text)
             
             return f'Texto: {text}. Filename: {filename}. La extensión del documento es: {file_extension}'
         else:
@@ -65,17 +69,25 @@ def hello():
 def hello_name(name):
     return f"Hello {name}!"
 
+
+
+
+
+
 def process_extension(extension, document_path, pdf_path):
     if extension == 'pdf':
         extract = DocumentExtractor()
         extract.extract_text_from_pdf(document_path)
-        print(extract.geminiApi.text)
+        #print(extract.geminiApi.text)
+        return extract
     elif extension in ['doc', 'docx']:
         extract = DocumentExtractor()
         extract.convert_word_to_pdf(document_path,pdf_path)
         extract.extract_text_from_pdf(pdf_path)
-        print(extract.geminiApi.text)
+        #print(extract.geminiApi.text)
+        return extract
     elif extension == 'txt':
         print('Se detectó un archivo de texto. Procesando...')
+        return None
     else:
         print('No se reconoce la extensión del archivo.')

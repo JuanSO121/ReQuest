@@ -63,5 +63,4 @@ extract.convert_word_to_pdf(docx_path, pdf_path)
 # Procesar el archivo PDF convertido
 extract.extract_text_from_pdf(pdf_path)
 print(extract.geminiApi.text)
-
 """

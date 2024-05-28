@@ -11,6 +11,8 @@ app.config['UPLOADED_PHOTOS_DEST'] = 'uploads/imagenes'
 #Carpeta PDF
 app.config['UPLOADED_DOCUMENTS_DEST'] = 'uploads/pdf'
 
+app.config['UPLOADED_WORD_DEST'] = 'uploads/word'
+
 
 configure_extensions(app)
 #Blueprints modularizar codigo
