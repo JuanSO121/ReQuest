@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="path/to/boxicons/css/boxicons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.0/css/boxicons.min.css" rel="stylesheet">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -104,18 +104,26 @@
             </li>
             {% endfor %}
           </ul>
-          <div class="w-full flex flex-row justify-between z-10">
-            <a class="hover:opacity-90 py-3 bg-cyan-50 w-full flex justify-center" href="{{ url_for('home.download_document', format='pdf') }}">
-              <i class='bx bxs-file-pdf'></i>
-            </a>
-            <a class="hover:opacity-90 py-3 bg-cyan-50 w-full flex justify-center" href="{{ url_for('home.download_document', format='word') }}">
-              <i class='bx bxs-file-doc'></i>
-            </a>
-            <a class="hover:opacity-90 py-3 bg-cyan-50 w-full flex justify-center" href="{{ url_for('home.download_document', format='txt') }}">
-              <i class='bx bxs-file-txt' undefined ></i>
-            </a>
+          <div class="flex justify-center space-x-4">
+            <button class="cursor-pointer transition-all bg-gray-700 text-white px-6 py-2 rounded-lg border-purple-400 border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] hover:shadow-xl hover:shadow-purple-300 shadow-purple-300 active:shadow-none">
+              <a href="{{ url_for('home.download_document', format='word') }}" title="Descargar en formato Word">
+                <p>word</p>
+              </a>
+            </button>
+            <button class="cursor-pointer transition-all bg-gray-700 text-white px-6 py-2 rounded-lg border-purple-400 border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] hover:shadow-xl hover:shadow-purple-300 shadow-purple-300 active:shadow-none">
+              <a href="{{ url_for('home.download_document', format='pdf') }}" title="Descargar en formato PDF">
+                <p>pdf</p>
+              </a>
+            </button>
+            <button class="cursor-pointer transition-all bg-gray-700 text-white px-6 py-2 rounded-lg border-purple-400 border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] hover:shadow-xl hover:shadow-purple-300 shadow-purple-300 active:shadow-none">
+              <a href="{{ url_for('home.download_document', format='txt') }}" title="Descargar en formato TXT">
+                <p>txt</p>
+              </a>
+            </button>
           </div>
-        </div>
+          
+          
+          
       {% endif %}
   </div>
 
@@ -135,6 +143,7 @@
       const modal = document.getElementById('messageModal');
       modal.classList.add('hidden');
     }
+
 
     function confirmSubmission(event) {
       // Lógica para mostrar la ventana emergente de confirmación
