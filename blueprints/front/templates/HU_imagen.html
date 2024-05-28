@@ -12,11 +12,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="path/to/boxicons/css/boxicons.min.css">
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
     .box-sizing-border { box-sizing: border-box; }
   </style>
+
 </head>
 <body class="bg-[#09090F] text-[#FFFFFF]">
   <!-- Contenedor principal -->
@@ -87,42 +91,32 @@
         {{ form.submit(class="overflow-hidden relative w-32 p-2 h-12 bg-black text-white border-none rounded-md text-xl font-bold cursor-pointer relative z-10 group mt-4") }}
       </form>
 
-
-      <!-- Sección para mostrar las historias de usuario generadas -->
-<!-- Sección para mostrar las historias de usuario generadas -->
-{% if historias_usuario %}
-  <div class="mt-8 p-4 bg-gray-800 text-white border border-purple-500 rounded-lg">
-    <h2 class="text-xl font-semibold mb-2">Historias de Usuario Generadas:</h2>
-    <ul class="list-disc list-inside">
-      {% for historia in historias_usuario %}
-        <li class="mb-2">
-          <div class="cursor-pointer hover:bg-gray-700 p-2 rounded-lg transition duration-300 ease-in-out">
-            {{ historia }}
+    <!-- Sección para mostrar las historias de usuario generadas -->
+    {% if historias_usuario %}
+    <div class="mt-8 p-4 bg-gray-800 text-white border border-purple-500 rounded-lg">
+        <h2 class="text-xl font-semibold mb-2">Historias de Usuario Generadas:</h2>
+        <ul class="list-disc list-inside">
+            {% for historia in historias_usuario %}
+            <li class="mb-2">
+                <div class="cursor-pointer hover:bg-gray-700 p-2 rounded-lg transition duration-300 ease-in-out">
+                    {{ historia }}
+                </div>
+            </li>
+            {% endfor %}
+          </ul>
+          <div class="w-full flex flex-row justify-between z-10">
+            <a class="hover:opacity-90 py-3 bg-cyan-50 w-full flex justify-center" href="{{ url_for('home.download_document', format='pdf') }}">
+              <i class='bx bxs-file-pdf'></i>
+            </a>
+            <a class="hover:opacity-90 py-3 bg-cyan-50 w-full flex justify-center" href="{{ url_for('home.download_document', format='word') }}">
+              <i class='bx bxs-file-doc'></i>
+            </a>
+            <a class="hover:opacity-90 py-3 bg-cyan-50 w-full flex justify-center" href="{{ url_for('home.download_document', format='txt') }}">
+              <i class='bx bxs-file-txt' undefined ></i>
+            </a>
           </div>
-        </li>
-      {% endfor %}
-    </ul>
-    <div class="w-full flex flex-row justify-between z-10">
-      <a class="hover:opacity-90 py-3 bg-cyan-50 w-full flex justify-center" href="{{ url_for('home.download_document', format='word') }}">
-          <svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" height="100" class="w-6 h-6 stroke-cyan-800">
-              <path stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none" d="M18.3,65.8v4A11.9,11.9,0,0,0,30.2,81.7H69.8A11.9,11.9,0,0,0,81.7,69.8v-4M65.8,50,50,65.8m0,0L34.2,50M50,65.8V18.3"></path>
-          </svg>
-      </a>
-      <a class="hover:opacity-90 py-3 bg-cyan-50 w-full flex justify-center" href="{{ url_for('home.download_document', format='pdf') }}">
-          <svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" height="100" class="w-6 h-6 stroke-cyan-800">
-              <path stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none" d="M21.9,50h0M50,50h0m28.1,0h0M25.9,50a4,4,0,1,1-4-4A4,4,0,0,1,25.9,50ZM54,50a4,4,0,1,1-4-4A4,4,0,0,1,54,50Zm28.1,0a4,4,0,1,1-4-4A4,4,0,0,1,82.1,50Z"></path>
-          </svg>
-      </a>
-      <a class="hover:opacity-90 py-3 bg-cyan-50 w-full flex justify-center" href="{{ url_for('home.download_document', format='txt') }}">
-          <svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" height="100" class="w-6 h-6 stroke-cyan-800">
-              <path stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none" d="M25.5,50h0m49,0h0M25.5,33h0m49,0h0M25.5,67h0m49,0h0M50,50h0m-49,0">
-              </path>
-          </svg>
-      </a>
-  </div>
-  </div>
-{% endif %}
-
+        </div>
+      {% endif %}
   </div>
 
   <script>
@@ -164,5 +158,6 @@
       confirmationModal.classList.add('hidden');
     }
   </script>
+
 </body>
 </html>
