@@ -8,11 +8,18 @@ class MyForm(FlaskForm):
     image = FileField('Image', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
-
 class MyFormDocument(FlaskForm):
-    text = StringField('Text', validators=[DataRequired()])
-    document = FileField('File', validators=[
+    description = StringField('Description', validators=[DataRequired()])
+    file = FileField('File', validators=[
         FileRequired(),
         FileAllowed(['jpg', 'jpeg', 'png', 'pdf', 'doc', 'docx'], 'Only images, PDFs, or Word documents are allowed!')
     ])
-    submit = SubmitField('Submit')
+    submit = SubmitField('Enviar')
+
+class ImageUploadForm(FlaskForm):
+    description = StringField('Description', validators=[DataRequired()])
+    file = FileField('File', validators=[
+        FileRequired(),
+        FileAllowed(['jpg', 'jpeg', 'png', 'pdf', 'doc', 'docx'], 'Only images, PDFs, or Word documents are allowed!')
+    ])
+    submit = SubmitField('Enviar')
