@@ -14,7 +14,7 @@ app.config['UPLOADED_DOCUMENTS_DEST'] = 'uploads/pdf'
 
 app.config['UPLOADED_WORD_DEST'] = 'uploads/word'
 
-app.config['GENERATED_UPLOADS_FOLDER'] = 'uploads/generados'
+app.config['GENERATED_UPLOADS_FOLDER'] = 'uploads/generated'
 
 # Imágenes Confi
 configure_extensions(app)

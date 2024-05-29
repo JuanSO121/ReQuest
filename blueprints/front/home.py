@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, current_app, flash, redirect, url_for, send_file
+from flask import Blueprint, render_template, current_app, flash, send_file
 from form import MyFormDocument
 from werkzeug.utils import secure_filename
 import os
@@ -31,6 +31,9 @@ def HU_imagen():
         else:
             filename = secure_filename(file.filename)
             file_path = os.path.join(current_app.config['UPLOADED_PHOTOS_DEST'], filename)
+            
+            # Asegúrate de que la carpeta existe
+            os.makedirs(os.path.dirname(file_path), exist_ok=True)
             file.save(file_path)
             
             # Simulando historias de usuario generadas
@@ -39,7 +42,6 @@ def HU_imagen():
                 "Como administrador, quiero revisar las historias generadas para asegurar la calidad."
             ]
             
-            # Redirigir a la misma página para mostrar las historias generadas
             return render_template('HU_imagen.html', form=form, historias_usuario=historias_usuario)
     
     return render_template('HU_imagen.html', form=form, historias_usuario=None)
@@ -69,15 +71,18 @@ def download_document(format):
         # Manejar un formato no admitido
         return 'Formato no admitido', 400
 
+    # Asegurarse de que la carpeta para guardar el documento existe
+    output_folder = current_app.config['GENERATED_UPLOADS_FOLDER']
+    os.makedirs(output_folder, exist_ok=True)
+
     # Guardar el documento en la ubicación especificada
-    file_path = os.path.join(current_app.config['GENERATED_UPLOADS_FOLDER'], filename)
+    file_path = os.path.join(output_folder, filename)
     with open(file_path, 'wb') as f:
         f.write(document_content)
 
     # Devolver el documento como una respuesta de archivo adjunto
-    return send_file(file_path, as_attachment=True, attachment_filename=filename, mimetype=mimetype)
+    return send_file(file_path, as_attachment=True, download_name=filename, mimetype=mimetype)
 
-# Dummy function to generate documents for testing purposes
 def generate_word_document(historias_usuario):
     from docx import Document
     document = Document()
@@ -85,6 +90,7 @@ def generate_word_document(historias_usuario):
         document.add_paragraph(historia)
     byte_io = BytesIO()
     document.save(byte_io)
+    byte_io.seek(0)  # Reset the stream position to the beginning
     return byte_io.getvalue()
 
 def generate_pdf_document(historias_usuario):
@@ -98,6 +104,7 @@ def generate_pdf_document(historias_usuario):
         y -= 20
     c.showPage()
     c.save()
+    byte_io.seek(0)  # Reset the stream position to the beginning
     return byte_io.getvalue()
 
 def generate_txt_document(historias_usuario):
