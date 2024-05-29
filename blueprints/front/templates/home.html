@@ -13,6 +13,140 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .box-sizing-border { box-sizing: border-box; }
+
+    .card {
+      width: 230px;
+      border-radius: 20px;
+      background: #1b233d;
+      padding: 5px;
+      overflow: hidden;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .card:hover {
+      transform: scale(1.05);
+    }
+    
+    .card .top-section {
+      height: 150px;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(45deg, rgb(122, 21, 255) 0%, rgb(66, 9, 139) 100%);
+      position: relative;
+    }
+    
+    .card .top-section .border {
+      border-bottom-right-radius: 10px;
+      height: 30px;
+      width: 130px;
+      background: white;
+      background: #1b233d;
+      position: relative;
+      transform: skew(-40deg);
+      box-shadow: -10px -10px 0 0 #1b233d;
+    }
+    
+    .card .top-section .border::before {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      top: 0;
+      right: -15px;
+      background: rgba(255, 255, 255, 0);
+      border-top-left-radius: 10px;
+      box-shadow: -5px -5px 0 2px #1b233d;
+    }
+    
+    .card .top-section::before {
+      content: "";
+      position: absolute;
+      top: 30px;
+      left: 0;
+      background: rgb(122, 21, 255);
+      height: 15px;
+      width: 15px;
+      border-top-left-radius: 15px;
+      box-shadow: -5px -5px 0 2px #1b233d;
+    }
+    
+    .card .top-section .icons {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 30px;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .card .top-section .icons .logo {
+      height: 100%;
+      aspect-ratio: 1;
+      padding: 7px 0 7px 15px;
+    }
+    
+    .card .top-section .icons .logo .top-section {
+      height: 100%;
+    }
+    
+    .card .top-section .icons .social-media {
+      height: 100%;
+      padding: 8px 15px;
+      display: flex;
+      gap: 7px;
+    }
+    
+    .card .top-section .icons .social-media .svg {
+      height: 100%;
+      fill: #1b233d;
+    }
+    
+    .card .top-section .icons .social-media .svg:hover {
+      fill: white;
+    }
+    
+    .card .bottom-section {
+      margin-top: 15px;
+      padding: 10px 5px;
+    }
+    
+    .card .bottom-section .title {
+      display: block;
+      font-size: 17px;
+      font-weight: bolder;
+      color: white;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+    
+    .card .bottom-section .row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    
+    .card .bottom-section .row .item {
+      flex: 30%;
+      text-align: center;
+      padding: 5px;
+      color: rgba(170, 222, 243, 0.721);
+    }
+    
+    .card .bottom-section .row .item .big-text {
+      font-size: 12px;
+      display: block;
+    }
+    
+    .card .bottom-section .row .item .regular-text {
+      font-size: 9px;
+    }
+    
+    .card .bottom-section .row .item:nth-child(2) {
+      border-left: 1px solid rgba(255, 255, 255, 0.126);
+      border-right: 1px solid rgba(255, 255, 255, 0.126);
+    }
   </style>
 </head>
 <body class="bg-[#09090F] text-[#FFFFFF]">
@@ -24,10 +158,8 @@
         
         <!-- Logo y título -->
         <div class="flex flex-row items-center">
-          <div class="inline-block font-['Oleo_Script'] text-2xl md:text-3xl text-white">
-            ReQuest
-          </div>
-          <div class="rounded-[10px] bg-[url('static/uploads/logo.png')] bg-[50%_50%] bg-cover bg-no-repeat w-[101px] h-[94px]"></div>
+          <div class="inline-block font-['Oleo_Script'] text-2xl md:text-3xl text-white">ReQuest</div>
+          <div class="rounded-[10px] bg-[url('{{ url_for('static', filename='uploads/logo.png') }}')] bg-[50%_50%] bg-cover bg-no-repeat w-[101px] h-[94px]"></div>
         </div>
         
         <!-- Menú de navegación -->
@@ -35,7 +167,7 @@
           <a href="home" class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
             Inicio
           </a>
-          <a href="HU_imagen" class="m-[0_11px_0_0] w-[96px] break-words font-['Montserrat'] font-semibold text-[18px] text-[#9238FF] bg-transparent border-none cursor-pointer focus:outline-none">
+          <a href="HU_imagen" class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
             HU
           </a>
           <a href="clasificacion" class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none">
@@ -45,13 +177,6 @@
             Priorización
           </a>
         </div>
-        
-        <!-- Botón de contacto -->
-        <button class="rounded-[35px] border-[1px_solid_#7A15FF] bg-[#7A15FF] m-[23.5px_0_24.5px_0] flex p-[12.5px_18.1px_12.5px_18px] box-sizing-border">
-          <span class="break-words font-['Montserrat'] font-medium text-[15px] text-[#FFFFFF]">
-            Contáctanos
-          </span>
-        </button>
       </div>
     </div>
 
@@ -88,105 +213,118 @@
                     </button>
                   </div>
                   <button class="flex items-center w-[7.5px] h-[13.8px]">
-                    <img class="w-[7.5px] h-[13.8px]" src="static/uploads/vectors/vector_1_x2.svg" alt="Arrow Icon" />
+                    <img class="w-[7.5px] h-[13.8px]" src="static/vectors/vector_1_x2.svg" alt="Arrow Icon" />
                   </button>
                 </div>
               </div>
               
             </div>
-            <div class="shadow-[0px_1px_3px_0px_rgba(0,0,5,0.5),0px_1px_2px_0px_rgba(0,0,5,0.3)] rounded-[25px] bg-[#121218] m-[0_0_0_3px] w-[775px] h-[494px]">
+            <div class="card shadow-[0px_1px_3px_0px_rgba(0,0,5,0.5),0px_1px_2px_0px_rgba(0,0,5,0.3)] rounded-[25px] bg-[#121218] m-[0_0_0_3px] w-[775px] h-[494px]">
             </div>
           </div>
-          <div class="bg-[#09090F] flex p-[176px_128.5px_0_128.5px] box-sizing-border">
+          
+          <div class="flex flex-col items-center p-4 box-sizing-border w-full">
             <div class="bg-[#09090F] flex flex-col items-center p-[96px_24px_96px_24px] box-sizing-border">
               <div class="m-[0_1.3px_64px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
                 <div class="m-[0_3.3px_24px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
                   <span class="break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#F7F7F8]">
-                  Nuestros Procesos 
+                    Nuestros Procesos
                   </span>
                   <span class="m-[0_0_0_1.2px] break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#BC86FF]">
-                  Automatizados
+                    Automatizados
                   </span>
                 </div>
                 <div class="m-[0_0_0_17.7px] flex flex-col items-center w-[fit-content] box-sizing-border">
                   <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
-                  Explore our essential tools for seamless website planning and design. Elevate
+                    Explore our essential tools for seamless website planning and design. Elevate
                   </span>
                   <span class="m-[0_56.5px_0_53.4px] break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
-                  your workflow with intuitive features and powerful capabilities.
+                    your workflow with intuitive features and powerful capabilities.
                   </span>
                 </div>
               </div>
-              <div class="flex flex-row gap-[0_24px] w-[fit-content] box-sizing-border">
-
+              <div class="flex flex-row gap-12 w-[fit-content] box-sizing-border">
+          
                 <!-- Imagen a Historias de Usuario -->
-                <a href="HU_imagen" class="relative flex w-80 flex-col rounded-xl bg-[#121218] bg-clip-border text-gray-700 shadow-md">
-                  <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-[#9238FF] bg-clip-border text-white shadow-lg shadow-[#9238FF] bg-gradient-to-r from-[#9238FF] to-[#462399]">
-                    <img src="static/uploads/img_HU.jpg" alt="Imagen" class="absolute inset-0 w-full h-full object-cover"/>
+                <a href="HU_imagen" class="card">
+                  <div class="top-section">
+                    <div class="border"></div>
+                    <div class="icons">
+                      <div class="logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                          <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                          <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                          <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                        </svg>
+                      </div>
+                    </div>
                   </div>
-                  <div class="p-6">
-                    <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-[#9238FF] antialiased">
-                      Imagen a Historias de Usuario
-                    </h5>
-                    <p class="block font-sans text-base font-light leading-relaxed text-white antialiased">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis ligula. 
-                  </p>
-                  
-                  </div>
-                  <div class="p-6 pt-0">
-                    <button data-ripple-light="true" type="button" class="select-none rounded-lg bg-[#9238FF] py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-[#9238FF]/20 transition-all hover:shadow-lg hover:shadow-[#9238FF]/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-                      Read More
-                    </button>
-                  </div>
-                </a>
-              <!-- Clasificación de Requisitos -->
-                <a href="clasificacion" class="relative flex w-80 flex-col rounded-xl bg-[#121218] bg-clip-border text-gray-700 shadow-md">
-                  <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-[#9238FF] bg-clip-border text-white shadow-lg shadow-[#9238FF] bg-gradient-to-r from-[#9238FF] to-[#462399]">
-                    <img src="static/uploads/clasificacion.jpg" alt="Imagen" class="absolute inset-0 w-full h-full object-cover"/>
-                  </div>
-                  <div class="p-6">
-                    <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-[#9238FF] antialiased">
-                      Clasificación de Requisitos
-                    </h5>
-                    <p class="block font-sans text-base font-light leading-relaxed text-white antialiased">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis ligula. 
-                  </p>
-                  
-                  </div>
-                  <div class="p-6 pt-0">
-                    <button data-ripple-light="true" type="button" class="select-none rounded-lg bg-[#9238FF] py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-[#9238FF]/20 transition-all hover:shadow-lg hover:shadow-[#9238FF]/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-                      Read More
-                    </button>
+                  <div class="bottom-section">
+                    <span class="title">Imagen a Historias de Usuario</span>
+                    <div class="row row1">
+                      <div class="item">
+                        <span class="big-text">2626</span>
+                        <span class="regular-text">UI elements</span>
+                      </div>
+                    </div>
                   </div>
                 </a>
-
+                
+                <!-- Clasificación de Requisitos -->
+                <a href="clasificacion" class="card">
+                  <div class="top-section">
+                    <div class="border"></div>
+                    <div class="icons">
+                      <div class="logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                          <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                          <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                          <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bottom-section">
+                    <span class="title">Clasificación de Requisitos</span>
+                    <div class="row row1">
+                      <div class="item">
+                        <span class="big-text">2626</span>
+                        <span class="regular-text">UI elements</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+          
                 <!-- Priorización de Requisitos -->
-              
-                <a href="priorizacion" class="relative flex w-80 flex-col rounded-xl bg-[#121218] bg-clip-border text-gray-700 shadow-md">
-                  <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-[#9238FF] bg-clip-border text-white shadow-lg shadow-[#9238FF] bg-gradient-to-r from-[#9238FF] to-[#462399]">
-                    <img src="static/uploads/priorizacion.jpg" alt="Imagen" class="absolute inset-0 w-full h-full object-cover"/>
+                 <a href="priorizacion" class="card">
+                  <div class="top-section">
+                    <div class="border"></div>
+                    <div class="icons">
+                      <div class="logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                          <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                          <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                          <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                        </svg>
+                      </div>
+                    </div>
                   </div>
-                  <div class="p-6">
-                    <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-[#9238FF] antialiased">
-                      Priorización de Requisitos
-                    </h5>
-                    <p class="block font-sans text-base font-light leading-relaxed text-white antialiased">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis ligula. 
-                  </p>
-                  
-                  </div>
-                  <div class="p-6 pt-0">
-                    <button data-ripple-light="true" type="button" class="select-none rounded-lg bg-[#9238FF] py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-[#9238FF]/20 transition-all hover:shadow-lg hover:shadow-[#9238FF]/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-                      Read More
-                    </button>
+                  <div class="bottom-section">
+                    <span class="title">Priorización de Requisitos</span>
+                    <div class="row row1">
+                      <div class="item">
+                        <span class="big-text">2626</span>
+                        <span class="regular-text">UI elements</span>
+                      </div>
+                    </div>
                   </div>
                 </a>
+          
               </div>
             </div>
-                    
-            </div>
           </div>
-          <div class="bg-[#09090F] flex flex-col items-center p-[96px_4px_0_0] w-[1425px] box-sizing-border">
+          
+          <div class="flex flex-col items-center p-[96px_4px_0_0] w-[1425px] box-sizing-border">
             <div class="m-[0_0_107px_6px] flex flex-col items-center w-[fit-content] box-sizing-border">
               <div class="m-[0_0_64px_17.4px] flex flex-col items-center w-[fit-content] box-sizing-border">
                 <div class="m-[0_28.3px_24px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
@@ -212,23 +350,23 @@
                     <div class="m-[0_8.8px_144.3px_0] flex flex-col w-[fit-content] box-sizing-border">
                       <div class="shadow-[inset_0px_1px_0px_0px_rgba(255,255,255,0.05)] rounded-[99999px] bg-[#28282E] m-[0_0_15.5px_0] flex self-start p-[2px_14.1px_2px_12px] box-sizing-border">
                         <span class="break-words font-['Inter'] font-medium text-[13.5px] leading-[1.481] text-[#C9CCD2]">
-                        Navigate
+                          Navegar
                         </span>
                       </div>
                       <div class="m-[0_0_16.5px_0] flex self-start box-sizing-border">
                         <span class="break-words font-['Inter'] font-semibold text-[46.3px] leading-[1.21] text-[#F7F7F8]">
-                        Sitemaps
+                          Mapas del sitio
                         </span>
                       </div>
                       <div class="flex flex-col w-[fit-content] box-sizing-border">
                         <span class="m-[0_9.5px_0_0] break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
-                        Craft structured sitemaps effortlessly, simplifying
+                          Desata tu creatividad con nuestra pizarra dinámica. Colabora sin
                         </span>
                         <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
-                        navigation and enhancing user experience for your
+                          problemas y visualiza ideas en tiempo real con herramientas intuitivas.
                         </span>
                         <span class="self-start break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
-                        website projects.
+                          Dale vida tus proyectos.
                         </span>
                       </div>
                     </div>
@@ -236,7 +374,7 @@
                       <div class="m-[0_0_34.3px_0] flex flex-row w-[fit-content] box-sizing-border">
                         <div class="m-[0.7px_56.8px_0_0] flex flex-col box-sizing-border">
                           <div class="m-[0_2.3px_11px_2.3px] flex self-start w-[19.5px] h-[18px] box-sizing-border">
-                            <img class="w-[19.5px] h-[18px]" src="static/uploads/vectors/vector_4_x2.svg" />
+                            <img class="w-[19.5px] h-[18px]" src="static/vectors/vector_4_x2.svg" />
                           </div>
                           <div class="m-[0_0_8px_0] flex box-sizing-border">
                             <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
@@ -257,7 +395,7 @@
                         </div>
                         <div class="m-[0_0_20px_0] flex flex-col box-sizing-border">
                           <div class="m-[0_3px_11px_3px] flex self-start w-[18.8px] h-[18.7px] box-sizing-border">
-                            <img class="w-[18.8px] h-[18.7px]" src="static/uploads/vectors/vector_x2.svg" />
+                            <img class="w-[18.8px] h-[18.7px]" src="static/vectors/vector_x2.svg" />
                           </div>
                           <div class="m-[0_0_8px_0] flex self-start box-sizing-border">
                             <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
@@ -277,7 +415,7 @@
                       <div class="m-[0_22.3px_0_0] flex flex-row w-[fit-content] box-sizing-border">
                         <div class="m-[0_55px_0_0] flex flex-col box-sizing-border">
                           <div class="m-[0_2.3px_10.2px_2.3px] flex self-start w-[19.5px] h-[19.5px] box-sizing-border">
-                            <img class="w-[19.5px] h-[19.5px]" src="static/uploads/vectors/vector_2_x2.svg" />
+                            <img class="w-[19.5px] h-[19.5px]" src="static/vectors/vector_2_x2.svg" />
                           </div>
                           <div class="m-[0_0_8px_0] flex self-start box-sizing-border">
                             <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
@@ -298,7 +436,7 @@
                         </div>
                         <div class="m-[0.8px_0_0_0] flex flex-col box-sizing-border">
                           <div class="m-[0_3px_8.8px_3px] flex self-start w-[20.2px] h-[20.2px] box-sizing-border">
-                            <img class="w-[20.2px] h-[20.2px]" src="static/uploads/vectors/vector_3_x2.svg" />
+                            <img class="w-[20.2px] h-[20.2px]" src="static/vectors/vector_3_x2.svg" />
                           </div>
                           <div class="m-[0_10.7px_8px_0] flex box-sizing-border">
                             <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
@@ -325,256 +463,10 @@
                 </div>
               </div>
             </div>
-            <div class="bg-[#09090F] flex flex-col items-center p-[96px_0_0_0] w-[1425px] box-sizing-border">
-              <div class="m-[0_0_20px_0] flex flex-col items-center w-[988px] box-sizing-border">
-                <div class="m-[0_0_84px_17.9px] flex flex-col items-center w-[fit-content] box-sizing-border">
-                  <div class="m-[0_17.4px_24px_2.3px] flex box-sizing-border">
-                    <span class="break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#F7F7F8]">
-                    Frequently Asked Questions
-                    </span>
-                  </div>
-                  <div class="flex box-sizing-border">
-                    <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
-                    Seamlessly use your preferred tools for unified work, start to finish.
-                    </span>
-                  </div>
-                </div>
-                <div class="flex flex-col items-center w-[988px] box-sizing-border">
-                  <div class="m-[0_0_20px_0] flex flex-col items-center w-[988px] box-sizing-border">
-                    <div class="m-[0_28px_18px_24px] flex flex-row justify-between w-[936px] box-sizing-border">
-                      <div class="flex box-sizing-border">
-                        <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
-                        What payment methods do you accept?
-                        </span>
-                      </div>
-                      <div class="relative m-[4px_0_4px_0] flex p-[7px_0_7px_0] w-[16px] h-[16px] box-sizing-border">
-                        <div class="bg-[#45454F] relative w-[16px] h-[2px]">
-                        </div>
-                        <div class="bg-[#45454F] absolute right-[7px] bottom-[0px] w-[2px] h-[16px]">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flex flex-col items-center w-[988px] box-sizing-border">
-                      <div class="bg-[#000005] w-[988px] h-[1px]">
-                      </div>
-                      <div class="bg-[#212127] w-[988px] h-[1px]">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="m-[0_0_20px_0] flex flex-col items-center w-[988px] box-sizing-border">
-                    <div class="m-[0_28px_18px_24px] flex flex-row justify-between w-[936px] box-sizing-border">
-                      <div class="flex box-sizing-border">
-                        <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
-                        How do I reset my password?
-                        </span>
-                      </div>
-                      <div class="relative m-[4px_0_4px_0] flex p-[7px_0_7px_0] w-[16px] h-[16px] box-sizing-border">
-                        <div class="bg-[#45454F] relative w-[16px] h-[2px]">
-                        </div>
-                        <div class="bg-[#45454F] absolute right-[7px] bottom-[0px] w-[2px] h-[16px]">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flex flex-col items-center w-[988px] box-sizing-border">
-                      <div class="bg-[#000005] w-[988px] h-[1px]">
-                      </div>
-                      <div class="bg-[#212127] w-[988px] h-[1px]">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="m-[0_0_20px_0] flex flex-col items-center w-[988px] box-sizing-border">
-                    <div class="m-[0_28px_18px_24px] flex flex-row justify-between w-[936px] box-sizing-border">
-                      <div class="flex box-sizing-border">
-                        <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
-                        Can I cancel my subscription at any time?
-                        </span>
-                      </div>
-                      <div class="relative m-[4px_0_4px_0] flex p-[7px_0_7px_0] w-[16px] h-[16px] box-sizing-border">
-                        <div class="bg-[#45454F] relative w-[16px] h-[2px]">
-                        </div>
-                        <div class="bg-[#45454F] absolute right-[7px] bottom-[0px] w-[2px] h-[16px]">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flex flex-col items-center w-[988px] box-sizing-border">
-                      <div class="bg-[#000005] w-[988px] h-[1px]">
-                      </div>
-                      <div class="bg-[#212127] w-[988px] h-[1px]">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="m-[0_0_20px_0] flex flex-col items-center w-[988px] box-sizing-border">
-                    <div class="m-[0_28px_18px_24px] flex flex-row justify-between w-[936px] box-sizing-border">
-                      <div class="flex box-sizing-border">
-                        <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
-                        Do you offer refunds for unused subscription time?
-                        </span>
-                      </div>
-                      <div class="relative m-[4px_0_4px_0] flex p-[7px_0_7px_0] w-[16px] h-[16px] box-sizing-border">
-                        <div class="bg-[#45454F] relative w-[16px] h-[2px]">
-                        </div>
-                        <div class="bg-[#45454F] absolute right-[7px] bottom-[0px] w-[2px] h-[16px]">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flex flex-col items-center w-[988px] box-sizing-border">
-                      <div class="bg-[#000005] w-[988px] h-[1px]">
-                      </div>
-                      <div class="bg-[#212127] w-[988px] h-[1px]">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="m-[0_0_20px_0] flex flex-col items-center w-[988px] box-sizing-border">
-                    <div class="m-[0_28px_18px_24px] flex flex-row justify-between w-[936px] box-sizing-border">
-                      <div class="flex box-sizing-border">
-                        <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
-                        Is my data backed up regularly?
-                        </span>
-                      </div>
-                      <div class="relative m-[4px_0_4px_0] flex p-[7px_0_7px_0] w-[16px] h-[16px] box-sizing-border">
-                        <div class="bg-[#45454F] relative w-[16px] h-[2px]">
-                        </div>
-                        <div class="bg-[#45454F] absolute right-[7px] bottom-[0px] w-[2px] h-[16px]">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flex flex-col items-center w-[988px] box-sizing-border">
-                      <div class="bg-[#000005] w-[988px] h-[1px]">
-                      </div>
-                      <div class="bg-[#212127] w-[988px] h-[1px]">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="m-[0_0_20px_0] flex flex-col items-center w-[988px] box-sizing-border">
-                    <div class="m-[0_28px_18px_24px] flex flex-row justify-between w-[936px] box-sizing-border">
-                      <div class="flex box-sizing-border">
-                        <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
-                        How do I invite collaborators to my projects?
-                        </span>
-                      </div>
-                      <div class="relative m-[4px_0_4px_0] flex p-[7px_0_7px_0] w-[16px] h-[16px] box-sizing-border">
-                        <div class="bg-[#45454F] relative w-[16px] h-[2px]">
-                        </div>
-                        <div class="bg-[#45454F] absolute right-[7px] bottom-[0px] w-[2px] h-[16px]">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flex flex-col items-center w-[988px] box-sizing-border">
-                      <div class="bg-[#000005] w-[988px] h-[1px]">
-                      </div>
-                      <div class="bg-[#212127] w-[988px] h-[1px]">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flex flex-col items-center w-[988px] box-sizing-border">
-                    <div class="m-[0_28px_18px_24px] flex flex-row justify-between w-[936px] box-sizing-border">
-                      <div class="flex box-sizing-border">
-                        <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
-                        Are there any discounts available for educational institutions?
-                        </span>
-                      </div>
-                      <div class="relative m-[4px_0_4px_0] flex p-[7px_0_7px_0] w-[16px] h-[16px] box-sizing-border">
-                        <div class="bg-[#45454F] relative w-[16px] h-[2px]">
-                        </div>
-                        <div class="bg-[#45454F] absolute right-[7px] bottom-[0px] w-[2px] h-[16px]">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flex flex-col items-center w-[988px] box-sizing-border">
-                      <div class="bg-[#000005] w-[988px] h-[1px]">
-                      </div>
-                      <div class="bg-[#212127] w-[988px] h-[1px]">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="bg-[rgba(9,9,15,0.3)] flex flex-col md:flex-row p-16 md:p-24 box-sizing-border w-full justify-center items-center md:items-start">
-                <div class="m-4 flex flex-col box-sizing-border">
-                  <div class="mb-6 flex self-start box-sizing-border">
-                    <span class="break-words font-['Inter'] font-normal text-sm text-[#94989E]">Product</span>
-                  </div>
-                  <div class="flex flex-col box-sizing-border">
-                    <div class="mb-4 flex self-start box-sizing-border">
-                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Sitemap</span>
-                    </div>
-                    <div class="mb-4 flex box-sizing-border">
-                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Wireframes</span>
-                    </div>
-                    <div class="mb-4 flex box-sizing-border">
-                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Whiteboard</span>
-                    </div>
-                    <div class="flex self-start box-sizing-border">
-                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Pricing</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="m-4 flex flex-col box-sizing-border">
-                  <div class="mb-6 flex self-start box-sizing-border">
-                    <span class="break-words font-['Inter'] font-normal text-sm text-[#94989E]">Developers</span>
-                  </div>
-                  <div class="flex flex-col box-sizing-border">
-                    <div class="mb-4 flex box-sizing-border">
-                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Community</span>
-                    </div>
-                    <div class="mb-4 flex box-sizing-border">
-                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Discord server</span>
-                    </div>
-                    <div class="mb-4 flex box-sizing-border">
-                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Help center</span>
-                    </div>
-                    <div class="flex self-start box-sizing-border">
-                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Changelog</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="m-4 flex flex-col items-center box-sizing-border">
-                  <div class="mb-6 flex box-sizing-border">
-                    <span class="break-words font-['Inter'] font-normal text-sm text-[#94989E]">Company</span>
-                  </div>
-                  <div class="flex flex-col box-sizing-border">
-                    <div class="mb-4 flex self-start box-sizing-border">
-                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">About</span>
-                    </div>
-                    <div class="mb-4 flex self-start box-sizing-border">
-                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Contact</span>
-                    </div>
-                    <div class="mb-4 flex self-start box-sizing-border">
-                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Careers</span>
-                    </div>
-                    <div class="mb-4 flex self-start box-sizing-border">
-                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Blog</span>
-                    </div>
-                    <div class="flex box-sizing-border">
-                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Testimonials</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="m-4 flex flex-col box-sizing-border">
-                  <div class="mb-6 flex self-start box-sizing-border">
-                    <span class="break-words font-['Inter'] font-normal text-sm text-[#94989E]">Social</span>
-                  </div>
-                  <div class="flex flex-col items-center box-sizing-border">
-                    <div class="mb-4 flex box-sizing-border">
-                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Instagram</span>
-                    </div>
-                    <div class="mb-4 flex box-sizing-border">
-                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Linkedin</span>
-                    </div>
-                    <div class="mb-4 flex box-sizing-border">
-                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Twitter</span>
-                    </div>
-                    <div class="flex box-sizing-border">
-                      <span class="break-words font-['Inter'] font-medium text-sm text-[#C9CCD2]">Facebook</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </body>
 </html>
