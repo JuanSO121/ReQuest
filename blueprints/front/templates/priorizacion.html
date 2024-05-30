@@ -115,11 +115,11 @@
 
     
     <!-- Sección para mostrar las historias de usuario generadas -->
-    {% if historias_usuario %}
+    {% if textos %}
     <div class="mt-8 p-4 bg-gray-800 text-white border border-purple-500 rounded-lg">
         <h2 class="text-xl font-semibold mb-2">Historias de Usuario Generadas:</h2>
         <ul class="list-disc list-inside">
-            {% for historia in historias_usuario %}
+            {% for historia in textos %}
             <li class="mb-2">
                 <div class="cursor-pointer hover:bg-gray-700 p-2 rounded-lg transition duration-300 ease-in-out">
                     {{ historia }}
@@ -147,7 +147,9 @@
     </div>
     {% endif %}
   </div>
+  
   <script>
+
     // Función para mostrar el loader
     function showLoader() {
       document.getElementById('loader').classList.remove('hidden');

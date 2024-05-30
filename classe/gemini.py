@@ -22,9 +22,9 @@ class geminiApi:
         self.model = genai.GenerativeModel(model_name="gemini-pro")
         return self.model
     
-    def generate_user_story(self, image_path):
+    def generate_user_story(self, image_path, description):
         imagen = Image.open(image_path)
-        prompt = "dame dos historias de usuario con el formato de como, quiero, para"
+        prompt = f"{description}, quiero que formules dos historias de usuario con el formato de como, quiero, para (no debe especificar la sintaxis)"
         response = self.model.generate_content([prompt, imagen])
         historias_usuario = response.text.split('\n')  
         return [historia.strip() for historia in historias_usuario if historia.strip()]

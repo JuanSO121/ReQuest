@@ -38,8 +38,8 @@ def priorizacion():
             
             if prioritized_requirements:
                 flash('Requisitos priorizados obtenidos correctamente.', 'success')
-                session['historias_usuario'] = prioritized_requirements  # Almacenar en sesión
-                return render_template('priorizacion.html', form=form, historias_usuario=prioritized_requirements)
+                session['textos'] = prioritized_requirements  # Almacenar en sesión
+                return render_template('priorizacion.html', form=form, textos=prioritized_requirements)
             else:
                 flash('Error al procesar el documento.', 'error')
 
@@ -64,33 +64,33 @@ def HU_imagen():
             
             api = geminiApi()
             api.configure()
-            historias_usuario = api.generate_user_story(file_path)
+            textos = api.generate_user_story(file_path,description)
             
-            session['historias_usuario'] = historias_usuario  # Almacenar en sesión
+            session['textos'] = textos  # Almacenar en sesión
             
-            return render_template('HU_imagen.html', form=form, historias_usuario=historias_usuario)
+            return render_template('HU_imagen.html', form=form, textos=textos)
     
-    return render_template('HU_imagen.html', form=form, historias_usuario=None)
+    return render_template('HU_imagen.html', form=form, textos=None)
 
 @home_bp.route('/download_document/<format>', methods=['GET'])
 def download_document(format):
-    historias_usuario = session.get('historias_usuario', [])
+    textos = session.get('textos', [])
     
-    if not historias_usuario:
+    if not textos:
         flash('No hay historias de usuario disponibles para descargar.', 'error')
         return redirect(url_for('home.priorizacion'))
 
     if format == 'word':
-        document_content = generate_word_document(historias_usuario)
-        filename = 'historias_usuario.docx'
+        document_content = generate_word_document(textos)
+        filename = 'textos.docx'
         mimetype = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
     elif format == 'pdf':
-        document_content = generate_pdf_document(historias_usuario)
-        filename = 'historias_usuario.pdf'
+        document_content = generate_pdf_document(textos)
+        filename = 'textos.pdf'
         mimetype = 'application/pdf'
     elif format == 'txt':
-        document_content = generate_txt_document(historias_usuario)
-        filename = 'historias_usuario.txt'
+        document_content = generate_txt_document(textos)
+        filename = 'textos.txt'
         mimetype = 'text/plain'
     else:
         return 'Formato no admitido', 400
@@ -104,23 +104,23 @@ def download_document(format):
 
     return send_file(file_path, as_attachment=True, download_name=filename, mimetype=mimetype)
 
-def generate_word_document(historias_usuario):
+def generate_word_document(textos):
     from docx import Document
     document = Document()
-    for historia in historias_usuario:
+    for historia in textos:
         document.add_paragraph(historia)
     byte_io = BytesIO()
     document.save(byte_io)
     byte_io.seek(0)  # Reset the stream position to the beginning
     return byte_io.getvalue()
 
-def generate_pdf_document(historias_usuario):
+def generate_pdf_document(textos):
     from reportlab.lib.pagesizes import letter
     from reportlab.pdfgen import canvas
     byte_io = BytesIO()
     c = canvas.Canvas(byte_io, pagesize=letter)
     y = 750
-    for historia in historias_usuario:
+    for historia in textos:
         c.drawString(40, y, historia)
         y -= 20
     c.showPage()
@@ -128,6 +128,6 @@ def generate_pdf_document(historias_usuario):
     byte_io.seek(0)  # Reset the stream position to the beginning
     return byte_io.getvalue()
 
-def generate_txt_document(historias_usuario):
-    content = "\n".join(historias_usuario)
+def generate_txt_document(textos):
+    content = "\n".join(textos)
     return content.encode('utf-8')

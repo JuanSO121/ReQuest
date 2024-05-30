@@ -103,12 +103,24 @@
 
       </form>
 
+    <!-- Loader -->
+    <div id="loader" class="animate-pulse flex flex-col items-center gap-4 w-60 hidden mt-4"> <!-- Agregar mt-4 para el margen superior -->
+      <div>
+        <div class="w-48 h-6 bg-slate-400 rounded-md"></div>
+        <div class="w-28 h-4 bg-slate-400 mx-auto mt-3 rounded-md"></div>
+      </div>
+      <div class="h-7 bg-slate-400 w-full rounded-md"></div>
+      <div class="h-7 bg-slate-400 w-full rounded-md"></div>
+      <div class="h-7 bg-slate-400 w-full rounded-md"></div>
+      <div class="h-7 bg-slate-400 w-1/2 rounded-md"></div>
+    </div>
+    
     <!-- Sección para mostrar las historias de usuario generadas -->
-    {% if historias_usuario %}
+    {% if textos %}
     <div class="mt-8 p-4 bg-gray-800 text-white border border-purple-500 rounded-lg">
         <h2 class="text-xl font-semibold mb-2">Historias de Usuario Generadas:</h2>
         <ul class="list-disc list-inside">
-            {% for historia in historias_usuario %}
+            {% for historia in textos %}
             <li class="mb-2">
                 <div class="cursor-pointer hover:bg-gray-700 p-2 rounded-lg transition duration-300 ease-in-out">
                     {{ historia }}
@@ -140,6 +152,16 @@
   </div>
 
   <script>
+    // Función para mostrar el loader
+    function showLoader() {
+      document.getElementById('loader').classList.remove('hidden');
+    }
+  
+    // Función para ocultar el loader
+    function hideLoader() {
+      document.getElementById('loader').classList.add('hidden');
+    }
+    
     document.getElementById('file').onchange = function(event) {
       const reader = new FileReader();
       reader.onload = function() {
