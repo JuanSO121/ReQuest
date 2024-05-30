@@ -36,21 +36,14 @@ def priorizacion():
             extractor = DocumentExtractor()
             prioritized_requirements = extractor.extract_prioritized_requirements(file_path)
             
-            # prioritized_requirements = [
-            #     "Requisito 1: Esta es la descripción del primer requisito.",
-            #     "Requisito 2: Esta es la descripción del segundo requisito.",
-            #     "Requisito 3: Esta es la descripción del tercer requisito."
-            # ]
-            
             if prioritized_requirements:
                 flash('Requisitos priorizados obtenidos correctamente.', 'success')
+                session['historias_usuario'] = prioritized_requirements  # Almacenar en sesión
                 return render_template('priorizacion.html', form=form, historias_usuario=prioritized_requirements)
             else:
                 flash('Error al procesar el documento.', 'error')
 
     return render_template('priorizacion.html', form=form)
-
-
 
 @home_bp.route('/HU_imagen', methods=['GET', 'POST'])
 def HU_imagen():
@@ -66,18 +59,14 @@ def HU_imagen():
             filename = secure_filename(file.filename)
             file_path = os.path.join(current_app.config['UPLOADED_PHOTOS_DEST'], filename)
             
-            # Asegúrate de que la carpeta existe
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
             file.save(file_path)
             
             api = geminiApi()
             api.configure()
             historias_usuario = api.generate_user_story(file_path)
-            # Simulando historias de usuario generadas
-            # historias_usuario = [
-            #     "Como usuario, quiero poder subir imágenes para que se generen historias automáticamente.",
-            #     "Como administrador, quiero revisar las historias generadas para asegurar la calidad."
-            # ]
+            
+            session['historias_usuario'] = historias_usuario  # Almacenar en sesión
             
             return render_template('HU_imagen.html', form=form, historias_usuario=historias_usuario)
     
@@ -85,11 +74,11 @@ def HU_imagen():
 
 @home_bp.route('/download_document/<format>', methods=['GET'])
 def download_document(format):
-    # Simulando obtener las historias de usuario generadas
-    historias_usuario = [
-        "Como usuario, quiero poder subir imágenes para que se generen historias automáticamente.",
-        "Como administrador, quiero revisar las historias generadas para asegurar la calidad."
-    ]
+    # Obtener las historias de usuario generadas desde la sesión
+    historias_usuario = session.get('historias_usuario')
+    if not historias_usuario:
+        flash('No hay historias de usuario disponibles para descargar.', 'error')
+        return redirect(url_for('home.home'))
 
     # Generar el documento en el formato especificado
     if format == 'word':
@@ -105,19 +94,14 @@ def download_document(format):
         filename = 'historias_usuario.txt'
         mimetype = 'text/plain'
     else:
-        # Manejar un formato no admitido
         return 'Formato no admitido', 400
 
-    # Asegurarse de que la carpeta para guardar el documento existe
     output_folder = current_app.config['GENERATED_UPLOADS_FOLDER']
     os.makedirs(output_folder, exist_ok=True)
-
-    # Guardar el documento en la ubicación especificada
     file_path = os.path.join(output_folder, filename)
     with open(file_path, 'wb') as f:
         f.write(document_content)
 
-    # Devolver el documento como una respuesta de archivo adjunto
     return send_file(file_path, as_attachment=True, download_name=filename, mimetype=mimetype)
 
 def generate_word_document(historias_usuario):

@@ -57,14 +57,35 @@ class DocumentExtractor:
         try:
             text = self.extract_text_from_pdf(pdf_path)
             if not text:
-                return f"No esta guardando"
-            prioritized_requirements = self.geminiApi.generate_classification_prioritization(text)
-            print(prioritized_requirements)
+                return "No se pudo extraer texto del PDF."
+            
+            # Unificar líneas que pertenecen al mismo párrafo
+            unified_text = self.unify_lines(text)
+            
+            prioritized_requirements = self.geminiApi.generate_classification_prioritization(unified_text)
             return prioritized_requirements
         except Exception as e:
             print(e)
             return None
+
+    def unify_lines(self, text):
+        lines = text.split('\n')
+        paragraphs = []
+        current_paragraph = []
+
+        for line in lines:
+            stripped_line = line.strip()
+            if stripped_line:
+                current_paragraph.append(stripped_line)
+            else:
+                if current_paragraph:
+                    paragraphs.append(' '.join(current_paragraph))
+                    current_paragraph = []
         
+        if current_paragraph:
+            paragraphs.append(' '.join(current_paragraph))
+        
+        return '\n'.join(paragraphs)
 
 """
 extract = DocumentExtractor()
