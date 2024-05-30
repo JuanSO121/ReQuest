@@ -1,38 +1,27 @@
-from flask import Flask, render_template
+from flask import Flask
 from blueprints.index.index import index_bp
+from blueprints.front.home import home_bp  # Importa home_bp en lugar de app
 from extensions import configure_extensions
 
 app = Flask(__name__)
 
 # Seguridad de información
 app.config['SECRET_KEY'] = 'your_secret_key'
-#Imgae
+# Carpetas Imagenes
 app.config['UPLOADED_PHOTOS_DEST'] = 'uploads/imagenes'
-#Carpeta PDF
+# Carpetas Documentos
 app.config['UPLOADED_DOCUMENTS_DEST'] = 'uploads/pdf'
 
+app.config['UPLOADED_WORD_DEST'] = 'uploads/word'
 
-# Imagenes Confi
+app.config['GENERATED_UPLOADS_FOLDER'] = 'uploads/generated'
+
+# Imágenes Confi
 configure_extensions(app)
-# Blueprints modularizar codigo
+
+# Blueprints modularizar código
 app.register_blueprint(index_bp)
-
-# Ruta para renderizar el home.html
-@app.route('/home')
-def home():
-    return render_template('home.html')
-
-@app.route('/HU_imagen')
-def HU_imagen():
-    return render_template('HU_imagen.html')
-
-@app.route('/clasificacion')
-def clasificacion():
-    return render_template('clasificacion.html')
-
-@app.route('/priorizacion')
-def priorizacion():
-    return render_template('priorizacion.html')
+app.register_blueprint(home_bp)  # Registra el blueprint home_bp
 
 if __name__ =='__main__':   
     app.run(debug=True)

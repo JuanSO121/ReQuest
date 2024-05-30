@@ -1,35 +1,64 @@
 from flask import Blueprint, render_template, redirect, request, current_app
-from form import MyForm, MyFormDocument
+from form import MyFormDocument
 from werkzeug.utils import secure_filename
-from extensions import photos, documents  # Import photos
 import os
 from classe.gemini import geminiApi
 from classe.document import DocumentExtractor
 
 index_bp = Blueprint("index", __name__, template_folder="templates")
 
-@index_bp.route("/", methods=['GET', 'POST'])
-def document():
+@index_bp.route("/Index", methods=['GET', 'POST'])
+def document(): 
     form = MyFormDocument()
 
     if form.validate_on_submit():
-        # Obtiene los datos del formulario
-        text = form.text.data
-        document = form.document.data
-        document_extension = document.filename.rsplit('.', 1)[1].lower()
-            
-        # Guarda el documento en el servidor
-        filename = secure_filename(document.filename)
-        document_path = os.path.join(current_app.config['UPLOADED_DOCUMENTS_DEST'], filename)
-        document.save(document_path)
-        process_extension(document_extension,document_path)
+        # Obtiene datos del formulario
+        text = form.description.data
+        file = form.file.data
+        filename = secure_filename(file.filename)
+        file_extension = filename.rsplit('.', 1)[1].lower()
 
-        # Devuelve una respuesta al usuario con la información del documento
-        return f'La extensión del documento es: {document_extension}, y el texto es: {text}'
+        # Obtener el nombre base del archivo
+        base_name = filename.rsplit('.', 1)[0]
+
+        # Nueva extensión que deseas usar
+        new_extension = "pdf"
+
+        # Crear el nuevo nombre agregando la palabra "converted" y la nueva extensión
+        new_filename = f"{base_name}_converted.{new_extension}"
+        
+        if file_extension in ['jpg', 'jpeg', 'png']:
+            # Guarda la imagen
+            image_path = os.path.join(current_app.config['UPLOADED_PHOTOS_DEST'], filename)
+            file.save(image_path)
+            
+            # Genera historia de usuario
+            api = geminiApi()
+            api.configure()
+            user_story = api.generate_user_story(image_path)
+            
+            return f'Texto: {text}. Filename: {filename}. Historia de usuario: {user_story}'
+        
+        elif file_extension in ['docx']:
+            
+
+            document_path = os.path.join(current_app.config['UPLOADED_WORD_DEST'], filename)
+
+            pdf_path = os.path.join(current_app.config['UPLOADED_DOCUMENTS_DEST'], new_filename)
+
+            file.save(document_path)
+            file.save(pdf_path)
+            
+            extract = process_extension(file_extension, document_path,pdf_path)
+            extract.geminiApi.configure_2()
+            text = extract.geminiApi.generate_user_story_info(extract.geminiApi.text_document)
+            print(text)
+            
+            return f'Texto: {text}. Filename: {filename}. La extensión del documento es: {file_extension}'
+        else:
+            return f'Extensión no soportada: {file_extension}'
     else:
         return render_template('document.html', form=form)
-
-
 
 @index_bp.route("/hello")
 def hello():
@@ -39,37 +68,21 @@ def hello():
 def hello_name(name):
     return f"Hello {name}!"
 
-@index_bp.route("/HU", methods=['GET', 'POST'])
-def getanswerd():
-    form = MyForm()
-    if form.validate_on_submit():
-        filename = photos.save(form.image.data)
-        print("Nombre del archivo guardado:", filename)
-        text = form.text.data
-        
-        # Obtener el path de la imagen subida usando current_app
-        image_path = os.path.join(current_app.config['UPLOADED_PHOTOS_DEST'], filename)
-        print("Path de la imagen:", image_path)
 
-        # Aquí podrías usar tu API para procesar la imagen
-        api = geminiApi()  
-        historias_usuario = api.generate_user_story(image_path)
-
-        return f"Texto: {text}. Historia de usuario: {historias_usuario}"
-    return render_template('upload.html', form=form)
-
-    
-    
-    
-"FUNCIÓN APARTE "
-def process_extension(extension,document_path):
+def process_extension(extension, document_path, pdf_path):
     if extension == 'pdf':
         extract = DocumentExtractor()
         extract.extract_text_from_pdf(document_path)
-        print(extract.geminiApi.text)
-    elif extension == 'doc' or extension == 'docx':
-        return 'Se detectó un documento de Word. Procesando...'
+        #print(extract.geminiApi.text)
+        return extract
+    elif extension in ['doc', 'docx']:
+        extract = DocumentExtractor()
+        extract.convert_word_to_pdf(document_path,pdf_path)
+        extract.extract_text_from_pdf(pdf_path)
+        #print(extract.geminiApi.text)
+        return extract
     elif extension == 'txt':
-        return 'Se detectó un archivo de texto. Procesando...'
+        print('Se detectó un archivo de texto. Procesando...')
+        return None
     else:
-        return 'No se reconoce la extensión del archivo.'
+        print('No se reconoce la extensión del archivo.')

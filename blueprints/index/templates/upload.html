@@ -11,16 +11,16 @@
     <form method="POST" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <div>
-            {{ form.text.label }}<br>
-            {{ form.text(size=32) }}<br>
-            {% for error in form.text.errors %}
+            {{ form.description.label }}<br>
+            {{ form.description(size=32) }}<br>
+            {% for error in form.description.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}
         </div>
         <div>
-            {{ form.image.label }}<br>
-            {{ form.image(size=32) }}<br>
-            {% for error in form.image.errors %}
+            {{ form.file.label }}<br>
+            {{ form.file(size=32) }}<br>
+            {% for error in form.file.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}
         </div>

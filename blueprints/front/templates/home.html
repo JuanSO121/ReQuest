@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReQuest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+  <style>
+    .box-sizing-border { box-sizing: border-box; }
+
+    .card {
+      width: 230px;
+      border-radius: 20px;
+      background: #1b233d;
+      padding: 5px;
+      overflow: hidden;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .card:hover {
+      transform: scale(1.05);
+    }
+    
+    .card .top-section {
+      height: 150px;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(45deg, rgb(122, 21, 255) 0%, rgb(66, 9, 139) 100%);
+      position: relative;
+    }
+    
+    .card .top-section .border {
+      border-bottom-right-radius: 10px;
+      height: 30px;
+      width: 130px;
+      background: white;
+      background: #1b233d;
+      position: relative;
+      transform: skew(-40deg);
+      box-shadow: -10px -10px 0 0 #1b233d;
+    }
+    
+    .card .top-section .border::before {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      top: 0;
+      right: -15px;
+      background: rgba(255, 255, 255, 0);
+      border-top-left-radius: 10px;
+      box-shadow: -5px -5px 0 2px #1b233d;
+    }
+    
+    .card .top-section::before {
+      content: "";
+      position: absolute;
+      top: 30px;
+      left: 0;
+      background: rgb(122, 21, 255);
+      height: 15px;
+      width: 15px;
+      border-top-left-radius: 15px;
+      box-shadow: -5px -5px 0 2px #1b233d;
+    }
+    
+    .card .top-section .icons {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 30px;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .card .top-section .icons .logo {
+      height: 100%;
+      aspect-ratio: 1;
+      padding: 7px 0 7px 15px;
+    }
+    
+    .card .top-section .icons .logo .top-section {
+      height: 100%;
+    }
+    
+    .card .top-section .icons .social-media {
+      height: 100%;
+      padding: 8px 15px;
+      display: flex;
+      gap: 7px;
+    }
+    
+    .card .top-section .icons .social-media .svg {
+      height: 100%;
+      fill: #1b233d;
+    }
+    
+    .card .top-section .icons .social-media .svg:hover {
+      fill: white;
+    }
+    
+    .card .bottom-section {
+      margin-top: 15px;
+      padding: 10px 5px;
+    }
+    
+    .card .bottom-section .title {
+      display: block;
+      font-size: 17px;
+      font-weight: bolder;
+      color: white;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+    
+    .card .bottom-section .row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    
+    .card .bottom-section .row .item {
+      flex: 30%;
+      text-align: center;
+      padding: 5px;
+      color: rgba(170, 222, 243, 0.721);
+    }
+    
+    .card .bottom-section .row .item .big-text {
+      font-size: 12px;
+      display: block;
+    }
+    
+    .card .bottom-section .row .item .regular-text {
+      font-size: 9px;
+    }
+    
+    .card .bottom-section .row .item:nth-child(2) {
+      border-left: 1px solid rgba(255, 255, 255, 0.126);
+      border-right: 1px solid rgba(255, 255, 255, 0.126);
+    }
+  </style>
+
+</head>
+<body class="bg-[#09090F] text-[#FFFFFF]">
+  <div class="flex flex-col items-center p-4 box-sizing-border w-full">
+    
+
+<!-- Encabezado -->
+<div class="flex flex-col items-center w-full p-4">
+  <div class="shadow-md rounded-3xl bg-[rgba(11,11,17,0.914)] mb-12 flex flex-row justify-between p-4 md:p-6 lg:w-3/4 w-full">
+    
+    <!-- Logo y título -->
+    <div class="flex flex-row items-center">
+      <div class="rounded-[10px] bg-[url('{{ url_for('static', filename='uploads/logo.png') }}')] bg-[50%_50%] bg-cover bg-no-repeat w-[101px] h-[94px] ml-4"></div>
+      <div class="inline-block font-['Oleo_Script'] text-2xl md:text-3xl text-white">ReQuest</div>
+    </div>
+    
+    <!-- Menú de navegación -->
+    <div class="flex flex-row justify-between items-center w-full max-w-lg">
+      <a href="/" class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none px-4 py-2 rounded hover:bg-purple-600 hover:text-white {{ 'home' in request.path and 'bg-white text-black rounded-full' or '' }}">
+        Inicio
+      </a>
+      
+      <a href="HU_imagen" class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none px-4 py-2 rounded hover:bg-purple-600 hover:text-white {{ 'HU_imagen' in request.path and 'bg-white text-black rounded-full' or '' }}">
+        HU
+      </a>
+      <a href="clasificacion" class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none px-4 py-2 rounded hover:bg-purple-600 hover:text-white {{ 'clasificacion' in request.path and 'bg-white text-black rounded-full' or '' }}">
+        Clasificación
+      </a>
+      <a href="priorizacion" class="break-words font-['Montserrat'] font-medium text-[18px] text-[#C1C1C1] bg-transparent border-none cursor-pointer focus:outline-none px-4 py-2 rounded hover:bg-purple-600 hover:text-white {{ 'priorizacion' in request.path and 'bg-white text-black rounded-full' or '' }}">
+        Priorización
+      </a>
+    </div>
+  </div>
+</div>
+
+            
+        <div class="m-[0_0_103px_20.7px] flex flex-col items-center w-[fit-content] box-sizing-border">
+          <div class="m-[0_0_40px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
+            <div class="m-[0_14.4px_48px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
+              <span class="break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#F7F7F8]">
+              Automatizacion
+              </span>
+              <span class="m-[0_0.6px_0_0] break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#BC86FF]">
+              Workflow
+              </span>
+            </div>
+            <div class="flex flex-col items-center w-[fit-content] box-sizing-border">
+              <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#C9CCD2]">
+              Simplify website planning with our intuitive design tool. Bring your ideas to life
+              </span>
+              <span class="m-[0_2.8px_0_0] break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#C9CCD2]">
+              effortlessly and create stunning visuals.
+              </span>
+            </div>
+          </div>
+          <div class="m-[0_12.7px_0_0] flex w-[311.9px] box-sizing-border">
+            <div class="shadow-[inset_0px_1px_0px_0px_rgba(255,255,255,0.2),0px_1px_3px_0px_rgba(9,9,15,0.5),0px_1px_2px_0px_rgba(9,9,15,0.3)] rounded-[8px] bg-[#7A15FF] m-[0_12px_0_0] flex items-center justify-center p-[10px_3.7px_10px_0] w-[124px]">
+              <button class="break-words font-inter font-medium text-sm leading-[1.5] text-[#F7F7F8]">
+                Get Started
+              </button>
+            </div>
+            <div class="shadow-[0px_1px_3px_0px_rgba(9,9,15,0),0px_1px_2px_0px_rgba(9,9,15,0),inset_0px_1px_0px_0px_rgba(255,255,255,0)] rounded-[8px] flex items-center justify-between p-[10px_0] w-[176px]">
+              <div class="flex items-center">
+                <button class="break-words font-inter font-medium text-[13.5px] leading-[1.481] text-[#C9CCD2]">
+                  See how it works
+                </button>
+              </div>
+              <button class="flex items-center w-[7.5px] h-[13.8px]">
+                <img class="w-[7.5px] h-[13.8px]" src="static/vectors/vector_1_x2.svg" alt="Arrow Icon" />
+              </button>
+            </div>
+          </div>
+          
+        </div>
+        <div class="card shadow-[0px_1px_3px_0px_rgba(0,0,5,0.5),0px_1px_2px_0px_rgba(0,0,5,0.3)] rounded-[25px] bg-[#121218] m-[0_0_0_3px] w-[775px] h-[494px]">
+        </div>
+      </div>
+          
+          <div class="flex flex-col items-center p-4 box-sizing-border w-full">
+            <div class="bg-[#09090F] flex flex-col items-center p-[96px_24px_96px_24px] box-sizing-border">
+              <div class="m-[0_1.3px_64px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
+                <div class="m-[0_3.3px_24px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
+                  <span class="break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#F7F7F8]">
+                    Nuestros Procesos
+                  </span>
+                  <span class="m-[0_0_0_1.2px] break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#BC86FF]">
+                    Automatizados
+                  </span>
+                </div>
+                <div class="m-[0_0_0_17.7px] flex flex-col items-center w-[fit-content] box-sizing-border">
+                  <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
+                    Explore our essential tools for seamless website planning and design. Elevate
+                  </span>
+                  <span class="m-[0_56.5px_0_53.4px] break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
+                    your workflow with intuitive features and powerful capabilities.
+                  </span>
+                </div>
+              </div>
+              <div class="flex flex-row gap-12 w-[fit-content] box-sizing-border">
+          
+                <!-- Imagen a Historias de Usuario -->
+                <a href="HU_imagen" class="card">
+                  <div class="top-section">
+                    <div class="border"></div>
+                    <div class="icons">
+                      <div class="logo">
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bottom-section">
+                    <span class="title">Imagen a Historias de Usuario</span>
+                    <div class="row row1">
+                      <div class="item">
+                        <span class="big-text">2626</span>
+                        <span class="regular-text">UI elements</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                
+                <!-- Clasificación de Requisitos -->
+                <a href="clasificacion" class="card">
+                  <div class="top-section">
+                    <div class="border"></div>
+                    <div class="icons">
+                      <div class="logo">
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bottom-section">
+                    <span class="title">Clasificación de Requisitos</span>
+                    <div class="row row1">
+                      <div class="item">
+                        <span class="big-text">2626</span>
+                        <span class="regular-text">UI elements</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+          
+                <!-- Priorización de Requisitos -->
+                 <a href="priorizacion" class="card">
+                  <div class="top-section">
+                    <div class="border"></div>
+                    <div class="icons">
+                      <div class="logo">
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bottom-section">
+                    <span class="title">Priorización de Requisitos</span>
+                    <div class="row row1">
+                      <div class="item">
+                        <span class="big-text">2626</span>
+                        <span class="regular-text">UI elements</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+          
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex flex-col items-center p-[96px_4px_0_0] w-[1425px] box-sizing-border">
+            <div class="m-[0_0_107px_6px] flex flex-col items-center w-[fit-content] box-sizing-border">
+              <div class="m-[0_0_64px_17.4px] flex flex-col items-center w-[fit-content] box-sizing-border">
+                <div class="m-[0_28.3px_24px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
+                  <span class="break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#F7F7F8]">
+                  Your Website Planning 
+                  </span>
+                  <span class="m-[0_0_0_7.6px] break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#7A15FF]">
+                  Solution
+                  </span>
+                </div>
+                <div class="flex flex-col items-center w-[fit-content] box-sizing-border">
+                  <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
+                  Unleash creativity effortlessly with our dynamic whiteboard. Collaborate seamlessly and
+                  </span>
+                  <span class="m-[0_7.1px_0_0] break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
+                  visualize ideas in real-time with intuitive tools.
+                  </span>
+                </div>
+              </div>
+              <div class="flex box-sizing-border">
+                <div class="shadow-[inset_0px_1px_0px_0px_rgba(255,255,255,0.05),0px_1px_3px_0px_rgba(0,0,5,0.9),0px_1px_2px_0px_rgba(0,0,5,0.7)] rounded-[8px] bg-[#09090F] flex flex-row p-[48px_103px_48px_48px] box-sizing-border">
+                  <div class="rounded-l-[6px] m-[0_79.3px_0_0] flex flex-col items-center box-sizing-border">
+                    <div class="m-[0_8.8px_144.3px_0] flex flex-col w-[fit-content] box-sizing-border">
+                      <div class="shadow-[inset_0px_1px_0px_0px_rgba(255,255,255,0.05)] rounded-[99999px] bg-[#28282E] m-[0_0_15.5px_0] flex self-start p-[2px_14.1px_2px_12px] box-sizing-border">
+                        <span class="break-words font-['Inter'] font-medium text-[13.5px] leading-[1.481] text-[#C9CCD2]">
+                          Navegar
+                        </span>
+                      </div>
+                      <div class="m-[0_0_16.5px_0] flex self-start box-sizing-border">
+                        <span class="break-words font-['Inter'] font-semibold text-[46.3px] leading-[1.21] text-[#F7F7F8]">
+                          Mapas del sitio
+                        </span>
+                      </div>
+                      <div class="flex flex-col w-[fit-content] box-sizing-border">
+                        <span class="m-[0_9.5px_0_0] break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
+                          Desata tu creatividad con nuestra pizarra dinámica. Colabora sin
+                        </span>
+                        <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
+                          problemas y visualiza ideas en tiempo real con herramientas intuitivas.
+                        </span>
+                        <span class="self-start break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
+                          Dale vida tus proyectos.
+                        </span>
+                      </div>
+                    </div>
+                    <div class="flex flex-col items-center w-[fit-content] box-sizing-border">
+                      <div class="m-[0_0_34.3px_0] flex flex-row w-[fit-content] box-sizing-border">
+                        <div class="m-[0.7px_56.8px_0_0] flex flex-col box-sizing-border">
+                          <div class="m-[0_2.3px_11px_2.3px] flex self-start w-[19.5px] h-[18px] box-sizing-border">
+                            <img class="w-[19.5px] h-[18px]" src="static/vectors/vector_4_x2.svg" />
+                          </div>
+                          <div class="m-[0_0_8px_0] flex box-sizing-border">
+                            <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
+                            Key content mapping
+                            </span>
+                          </div>
+                          <div class="m-[0_3.2px_0_0] flex flex-col w-[fit-content] box-sizing-border">
+                            <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            Map essential content
+                            </span>
+                            <span class="break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            efficiently for streamlined
+                            </span>
+                            <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            project organization.
+                            </span>
+                          </div>
+                        </div>
+                        <div class="m-[0_0_20px_0] flex flex-col box-sizing-border">
+                          <div class="m-[0_3px_11px_3px] flex self-start w-[18.8px] h-[18.7px] box-sizing-border">
+                            <img class="w-[18.8px] h-[18.7px]" src="static/vectors/vector_x2.svg" />
+                          </div>
+                          <div class="m-[0_0_8px_0] flex self-start box-sizing-border">
+                            <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
+                            Final edit control
+                            </span>
+                          </div>
+                          <div class="flex flex-col w-[fit-content] box-sizing-border">
+                            <span class="break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            Control the ultimate edit for
+                            </span>
+                            <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            project perfection.
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="m-[0_22.3px_0_0] flex flex-row w-[fit-content] box-sizing-border">
+                        <div class="m-[0_55px_0_0] flex flex-col box-sizing-border">
+                          <div class="m-[0_2.3px_10.2px_2.3px] flex self-start w-[19.5px] h-[19.5px] box-sizing-border">
+                            <img class="w-[19.5px] h-[19.5px]" src="static/vectors/vector_2_x2.svg" />
+                          </div>
+                          <div class="m-[0_0_8px_0] flex self-start box-sizing-border">
+                            <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
+                            Optimize Planning
+                            </span>
+                          </div>
+                          <div class="flex flex-col w-[fit-content] box-sizing-border">
+                            <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            Enhance plans for
+                            </span>
+                            <span class="break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            streamlined execution and
+                            </span>
+                            <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            success.
+                            </span>
+                          </div>
+                        </div>
+                        <div class="m-[0.8px_0_0_0] flex flex-col box-sizing-border">
+                          <div class="m-[0_3px_8.8px_3px] flex self-start w-[20.2px] h-[20.2px] box-sizing-border">
+                            <img class="w-[20.2px] h-[20.2px]" src="static/vectors/vector_3_x2.svg" />
+                          </div>
+                          <div class="m-[0_10.7px_8px_0] flex box-sizing-border">
+                            <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
+                            Intelligent tagging
+                            </span>
+                          </div>
+                          <div class="flex flex-col w-[fit-content] box-sizing-border">
+                            <span class="break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            Efficiently organize with
+                            </span>
+                            <span class="m-[0_5.9px_0_0] break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            smart, intuitive tagging
+                            </span>
+                            <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
+                            solutions.
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="shadow-[inset_1px_1px_0px_0px_rgba(255,255,255,0.05),0px_0px_0px_1px_rgba(9,9,15,0.698)] rounded-l-[8px] bg-[#212127] w-[503px] h-[606px]">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
