@@ -100,6 +100,19 @@
         <!-- Botón de envío -->
         {{ form.submit(class="overflow-hidden relative w-32 p-2 h-12 bg-black text-white border-none rounded-md text-xl font-bold cursor-pointer relative z-10 group mt-4 hover:bg-purple-600 transform hover:scale-105 transition-transform duration-300") }}
     </form>
+
+  <!-- Loader -->
+  <div id="loader" class="animate-pulse flex flex-col items-center gap-4 w-60 hidden mt-4"> <!-- Agregar mt-4 para el margen superior -->
+    <div>
+      <div class="w-48 h-6 bg-slate-400 rounded-md"></div>
+      <div class="w-28 h-4 bg-slate-400 mx-auto mt-3 rounded-md"></div>
+    </div>
+    <div class="h-7 bg-slate-400 w-full rounded-md"></div>
+    <div class="h-7 bg-slate-400 w-full rounded-md"></div>
+    <div class="h-7 bg-slate-400 w-full rounded-md"></div>
+    <div class="h-7 bg-slate-400 w-1/2 rounded-md"></div>
+  </div>
+
     
     <!-- Sección para mostrar las historias de usuario generadas -->
     {% if historias_usuario %}
@@ -134,29 +147,40 @@
     </div>
     {% endif %}
   </div>
-<script>
-
+  <script>
+    // Función para mostrar el loader
+    function showLoader() {
+      document.getElementById('loader').classList.remove('hidden');
+    }
+  
+    // Función para ocultar el loader
+    function hideLoader() {
+      document.getElementById('loader').classList.add('hidden');
+    }
+  
+    // Asignar el evento change al input de archivo
     document.getElementById('fileUpload').onchange = function(event) {
+      showLoader(); // Mostrar el loader al seleccionar un archivo
       showFileName(event);
     }
+  
+    // Asignar el evento change al input de archivo
     document.getElementById('file').onchange = function(event) {
+      showLoader(); // Mostrar el loader al seleccionar un archivo
       const reader = new FileReader();
       reader.onload = function() {
         const imagePreview = document.getElementById('imagePreview');
         const uploadedImage = document.getElementById('uploadedImage');
         uploadedImage.src = reader.result;
         imagePreview.classList.remove('hidden');
+        hideLoader(); // Ocultar el loader después de cargar la imagen
       }
       reader.readAsDataURL(event.target.files[0]);
-    }
-
-    document.getElementById('closeModal').onclick = function() {
-      const modal = document.getElementById('messageModal');
-      modal.classList.add('hidden');
     }
   
     // Asignar el evento clic al botón de confirmar
     document.getElementById('confirmButton').onclick = function() {
+      showLoader(); // Mostrar el loader al enviar el formulario
       // Enviar el formulario si se confirma
       document.querySelector('form').submit();
     }
@@ -167,14 +191,13 @@
       const confirmationModal = document.getElementById('confirmationModal');
       confirmationModal.classList.add('hidden');
     }
-
+  
     function showFileName(event) {
       const fileNameDiv = document.getElementById('fileName');  // Corregir el id aquí
       fileNameDiv.textContent = event.target.files[0].name;
       fileNameDiv.classList.remove('hidden');
-  }
-  
-</script>
+    }
+  </script>
     
 
 </body>

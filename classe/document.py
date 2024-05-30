@@ -75,7 +75,7 @@ class DocumentExtractor:
             print(e)
             return None
         
-    def extract_prioritized_requirements(self, file_path):
+    def extract_prioritized_requirements(self, file_path, description):
         file_extension = os.path.splitext(file_path)[1].lower()
         if file_extension == '.pdf':
             text = self.extract_text_from_pdf(file_path)
@@ -89,9 +89,10 @@ class DocumentExtractor:
         if not text:
             return "No se pudo extraer texto del archivo."
 
-        prioritized_requirements = self.geminiApi.generate_classification_prioritization(text)
+        # Incluir la descripción del usuario en la solicitud a la API de Gemini
+        full_text = f"Descripción del usuario: {description}\n\n{text}"
+        prioritized_requirements = self.geminiApi.generate_classification_prioritization(full_text)
         return prioritized_requirements
-
 """
 extract = DocumentExtractor()
 

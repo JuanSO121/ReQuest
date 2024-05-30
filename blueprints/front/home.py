@@ -34,7 +34,7 @@ def priorizacion():
             file.save(file_path)
             
             extractor = DocumentExtractor()
-            prioritized_requirements = extractor.extract_prioritized_requirements(file_path)
+            prioritized_requirements = extractor.extract_prioritized_requirements(file_path, description)
             
             if prioritized_requirements:
                 flash('Requisitos priorizados obtenidos correctamente.', 'success')
