@@ -11,7 +11,6 @@ class geminiApi:
     def __init__(self):
         self.api_key = os.getenv("GEMINI_API_KEY")
         self.model = None
-        self.text_document = None
 
     def configure(self):
         genai.configure(api_key=self.api_key)

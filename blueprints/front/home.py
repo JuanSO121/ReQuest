@@ -33,22 +33,23 @@ def priorizacion():
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
             file.save(file_path)
             
-            # extractor = DocumentExtractor()
-            # prioritized_requirements = extractor.extract_prioritized_requirements(file_path)
+            extractor = DocumentExtractor()
+            prioritized_requirements = extractor.extract_prioritized_requirements(file_path)
             
-            prioritized_requirements = [
-                "Requisito 1: Esta es la descripción del primer requisito.",
-                "Requisito 2: Esta es la descripción del segundo requisito.",
-                "Requisito 3: Esta es la descripción del tercer requisito."
-            ]
+            # prioritized_requirements = [
+            #     "Requisito 1: Esta es la descripción del primer requisito.",
+            #     "Requisito 2: Esta es la descripción del segundo requisito.",
+            #     "Requisito 3: Esta es la descripción del tercer requisito."
+            # ]
             
             if prioritized_requirements:
                 flash('Requisitos priorizados obtenidos correctamente.', 'success')
-                return render_template('priorizacion.html', form=form, priorizacion=prioritized_requirements)
+                return render_template('priorizacion.html', form=form, historias_usuario=prioritized_requirements)
             else:
                 flash('Error al procesar el documento.', 'error')
 
     return render_template('priorizacion.html', form=form)
+
 
 
 @home_bp.route('/HU_imagen', methods=['GET', 'POST'])

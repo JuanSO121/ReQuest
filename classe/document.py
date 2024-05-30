@@ -46,7 +46,9 @@ class DocumentExtractor:
             response = self.client.process_document(request=request)
             document = response.document
             text = document.text
-            self.geminiApi.text_document(text) 
+  
+            self.geminiApi.configure_2()
+            return text
         except Exception as e:
             print(e)
             return None
@@ -55,8 +57,9 @@ class DocumentExtractor:
         try:
             text = self.extract_text_from_pdf(pdf_path)
             if not text:
-                return None
+                return f"No esta guardando"
             prioritized_requirements = self.geminiApi.generate_classification_prioritization(text)
+            print(prioritized_requirements)
             return prioritized_requirements
         except Exception as e:
             print(e)
