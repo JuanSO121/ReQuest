@@ -53,11 +53,20 @@ class geminiApi:
         return response.text
 
     def generate_classification_prioritization(self, text_R):
-        prompt = text_R
-        estructura = 'Quiero que priorices esta información a la que tenga mayor demanda hasta la que tenga menor demanda enumerandolos'
-        full_prompt = f'{estructura} {prompt}'
+        estructura = 'Prioriza los siguientes requisitos según su importancia, enumerándolos del más importante al menos importante:'
+        full_prompt = f'{estructura} {text_R}'
         response = self.model.generate_content(full_prompt)
-        return response.text
+        prioritization = response.text
+        print("Priorización de requisitos generada:")
+        print(prioritization)
+
+        # Parsear la respuesta para obtener la lista de requisitos priorizados
+        prioritized_requirements = [req.strip() for req in prioritization.split('\n') if req.strip()]
+
+        return prioritized_requirements
+
+
+
 
 
 

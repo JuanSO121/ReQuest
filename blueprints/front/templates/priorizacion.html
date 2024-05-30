@@ -89,12 +89,14 @@
           <div class="flex items-center justify-center">
             <span class="font-normal text-purple-500">Haz click para subir imagen</span>
           </div>
-          {{ form.file(class="hidden") }}
+          {{ form.file(class="hidden", id="fileUpload") }}
+
+
         </label>
-        <!-- Vista previa de la imagen -->
-        <div id="imagePreview" class="mt-4 hidden">
-          <img id="uploadedImage" src="#" alt="Vista previa de la imagen" class="max-w-full h-auto rounded-lg">
-        </div>
+
+        <!-- Mostrar nombre del archivo -->
+        <div id="fileName" class="mt-4 text-center font-['Inter'] text-[16px] text-[#C1C1C1] hidden"></div>
+
         <!-- Sección de descripción -->
         {{ form.description(class="mt-4 p-2 w-full md:w-3/4 bg-gray-800 text-white border border-purple-500 rounded-lg", placeholder="Proporcione una breve descripción de su solicitud...") }}
         <!-- Botón de envío -->
@@ -103,15 +105,15 @@
 
       </form>
 
-    <!-- Sección para mostrar los requisitos priorizados -->
-    {% if priorizacion %}
+    <!-- Sección para mostrar las historias de usuario generadas -->
+    {% if historias_usuario %}
     <div class="mt-8 p-4 bg-gray-800 text-white border border-purple-500 rounded-lg">
         <h2 class="text-xl font-semibold mb-2">Historias de Usuario Generadas:</h2>
         <ul class="list-disc list-inside">
-            {% for requisito in priorizacion %}
+            {% for historia in historias_usuario %}
             <li class="mb-2">
                 <div class="cursor-pointer hover:bg-gray-700 p-2 rounded-lg transition duration-300 ease-in-out">
-                    {{ requisito }}
+                    {{ historia }}
                 </div>
             </li>
             {% endfor %}
@@ -133,13 +135,15 @@
               </a>
             </button>
           </div>
-          
-          
-          
+
       {% endif %}
   </div>
 
-  <script>
+<script>
+
+    document.getElementById('fileUpload').onchange = function(event) {
+      showFileName(event);
+    }
     document.getElementById('file').onchange = function(event) {
       const reader = new FileReader();
       reader.onload = function() {
@@ -178,7 +182,15 @@
       const confirmationModal = document.getElementById('confirmationModal');
       confirmationModal.classList.add('hidden');
     }
-  </script>
+
+    function showFileName(event) {
+      const fileNameDiv = document.getElementById('fileName');  // Corregir el id aquí
+      fileNameDiv.textContent = event.target.files[0].name;
+      fileNameDiv.classList.remove('hidden');
+  }
+  
+</script>
+    
 
 </body>
 </html>

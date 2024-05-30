@@ -50,6 +50,18 @@ class DocumentExtractor:
         except Exception as e:
             print(e)
             return None
+        
+    def extract_prioritized_requirements(self, pdf_path):
+        try:
+            text = self.extract_text_from_pdf(pdf_path)
+            if not text:
+                return None
+            prioritized_requirements = self.geminiApi.generate_classification_prioritization(text)
+            return prioritized_requirements
+        except Exception as e:
+            print(e)
+            return None
+        
 
 """
 extract = DocumentExtractor()

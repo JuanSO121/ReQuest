@@ -1,8 +1,10 @@
-from flask import Blueprint, render_template, current_app, flash, send_file
+from flask import Blueprint, render_template, current_app, flash, send_file, request, redirect, url_for, session
 from form import MyFormDocument
 from werkzeug.utils import secure_filename
 import os
 from io import BytesIO
+from classe.document import DocumentExtractor
+from classe.gemini import geminiApi
 
 home_bp = Blueprint("home", __name__, template_folder="templates")
 
@@ -16,7 +18,38 @@ def clasificacion():
 
 @home_bp.route('/priorizacion', methods=['GET', 'POST'])
 def priorizacion():
-    return render_template('priorizacion.html')
+    form = MyFormDocument()
+    if form.validate_on_submit():
+        description = form.description.data
+        file = form.file.data
+        if not description:
+            flash('Por favor, proporcione una descripción.', 'error')
+        elif not file:
+            flash('Por favor, suba un documento.', 'error')
+        else:
+            filename = secure_filename(file.filename)
+            file_path = os.path.join(current_app.config['UPLOADED_DOCUMENTS_DEST'], filename)
+            
+            os.makedirs(os.path.dirname(file_path), exist_ok=True)
+            file.save(file_path)
+            
+            # extractor = DocumentExtractor()
+            # prioritized_requirements = extractor.extract_prioritized_requirements(file_path)
+            
+            prioritized_requirements = [
+                "Requisito 1: Esta es la descripción del primer requisito.",
+                "Requisito 2: Esta es la descripción del segundo requisito.",
+                "Requisito 3: Esta es la descripción del tercer requisito."
+            ]
+            
+            if prioritized_requirements:
+                flash('Requisitos priorizados obtenidos correctamente.', 'success')
+                return render_template('priorizacion.html', form=form, priorizacion=prioritized_requirements)
+            else:
+                flash('Error al procesar el documento.', 'error')
+
+    return render_template('priorizacion.html', form=form)
+
 
 @home_bp.route('/HU_imagen', methods=['GET', 'POST'])
 def HU_imagen():
@@ -36,11 +69,14 @@ def HU_imagen():
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
             file.save(file_path)
             
+            api = geminiApi()
+            api.configure()
+            historias_usuario = api.generate_user_story(file_path)
             # Simulando historias de usuario generadas
-            historias_usuario = [
-                "Como usuario, quiero poder subir imágenes para que se generen historias automáticamente.",
-                "Como administrador, quiero revisar las historias generadas para asegurar la calidad."
-            ]
+            # historias_usuario = [
+            #     "Como usuario, quiero poder subir imágenes para que se generen historias automáticamente.",
+            #     "Como administrador, quiero revisar las historias generadas para asegurar la calidad."
+            # ]
             
             return render_template('HU_imagen.html', form=form, historias_usuario=historias_usuario)
     
