@@ -74,13 +74,12 @@ def HU_imagen():
 
 @home_bp.route('/download_document/<format>', methods=['GET'])
 def download_document(format):
-    # Obtener las historias de usuario generadas desde la sesión
-    historias_usuario = session.get('historias_usuario')
+    historias_usuario = session.get('historias_usuario', [])
+    
     if not historias_usuario:
         flash('No hay historias de usuario disponibles para descargar.', 'error')
-        return redirect(url_for('home.home'))
+        return redirect(url_for('home.priorizacion'))
 
-    # Generar el documento en el formato especificado
     if format == 'word':
         document_content = generate_word_document(historias_usuario)
         filename = 'historias_usuario.docx'
@@ -98,6 +97,7 @@ def download_document(format):
 
     output_folder = current_app.config['GENERATED_UPLOADS_FOLDER']
     os.makedirs(output_folder, exist_ok=True)
+
     file_path = os.path.join(output_folder, filename)
     with open(file_path, 'wb') as f:
         f.write(document_content)

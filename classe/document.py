@@ -46,46 +46,51 @@ class DocumentExtractor:
             response = self.client.process_document(request=request)
             document = response.document
             text = document.text
-  
+
             self.geminiApi.configure_2()
             return text
         except Exception as e:
             print(e)
             return None
         
-    def extract_prioritized_requirements(self, pdf_path):
+    def extract_text_from_docx(self, docx_path):
         try:
-            text = self.extract_text_from_pdf(pdf_path)
-            if not text:
-                return "No se pudo extraer texto del PDF."
-            
-            # Unificar líneas que pertenecen al mismo párrafo
-            unified_text = self.unify_lines(text)
-            
-            prioritized_requirements = self.geminiApi.generate_classification_prioritization(unified_text)
-            return prioritized_requirements
+            document = Document(docx_path)
+            text = "\n".join(paragraph.text for paragraph in document.paragraphs)
+
+            self.geminiApi.configure_2()
+            return text
         except Exception as e:
             print(e)
             return None
-
-    def unify_lines(self, text):
-        lines = text.split('\n')
-        paragraphs = []
-        current_paragraph = []
-
-        for line in lines:
-            stripped_line = line.strip()
-            if stripped_line:
-                current_paragraph.append(stripped_line)
-            else:
-                if current_paragraph:
-                    paragraphs.append(' '.join(current_paragraph))
-                    current_paragraph = []
         
-        if current_paragraph:
-            paragraphs.append(' '.join(current_paragraph))
+    def extract_text_from_txt(self, txt_path):
+        try:
+            with open(txt_path, 'r', encoding='utf-8') as file:
+                text = file.read()
+
+            self.geminiApi.configure_2()
+            return text
+        except Exception as e:
+            print(e)
+            return None
         
-        return '\n'.join(paragraphs)
+    def extract_prioritized_requirements(self, file_path):
+        file_extension = os.path.splitext(file_path)[1].lower()
+        if file_extension == '.pdf':
+            text = self.extract_text_from_pdf(file_path)
+        elif file_extension == '.docx':
+            text = self.extract_text_from_docx(file_path)
+        elif file_extension == '.txt':
+            text = self.extract_text_from_txt(file_path)
+        else:
+            return "Formato de archivo no soportado."
+
+        if not text:
+            return "No se pudo extraer texto del archivo."
+
+        prioritized_requirements = self.geminiApi.generate_classification_prioritization(text)
+        return prioritized_requirements
 
 """
 extract = DocumentExtractor()
