@@ -5,6 +5,7 @@ import os
 from io import BytesIO
 from classe.document import DocumentExtractor
 from classe.gemini import geminiApi
+import atexit
 
 home_bp = Blueprint("home", __name__, template_folder="templates")
 
@@ -82,7 +83,7 @@ def HU_imagen():
             flash('Por favor, suba un archivo.', 'error')
         else:
             filename = secure_filename(file.filename)
-            file_path = os.path.join(current_app.config['UPLOADED_PHOTOS_DEST'], filename)
+            file_path = os.path.join(current_app.config['GENERATED_UPLOADS_FOLDER'], filename)
             
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
             file.save(file_path)
@@ -138,6 +139,9 @@ def download_document(format):
     with open(file_path, 'wb') as f:
         f.write(document_content)
 
+    # Guarda el archivo generado en la lista global
+    generated_files.append(file_path)
+
     return send_file(file_path, as_attachment=True, download_name=filename, mimetype=mimetype)
 
 def generate_word_document(textos):
@@ -167,3 +171,18 @@ def generate_pdf_document(textos):
 def generate_txt_document(textos):
     content = "\n".join(textos)
     return content.encode('utf-8')
+
+# Variable global para almacenar archivos generados
+generated_files = []
+
+# Función para limpiar archivos generados
+def cleanup_files():
+    for file_path in generated_files:
+        try:
+            os.remove(file_path)
+        except OSError:
+            pass
+
+# Registrar la función de limpieza para ejecutarse al cerrar la aplicación
+import atexit
+atexit.register(cleanup_files)
