@@ -54,22 +54,33 @@ def HU_imagen():
         if not description:
             flash('Por favor, proporcione una descripción.', 'error')
         elif not file:
-            flash('Por favor, suba una imagen.', 'error')
+            flash('Por favor, suba un archivo.', 'error')
         else:
             filename = secure_filename(file.filename)
             file_path = os.path.join(current_app.config['UPLOADED_PHOTOS_DEST'], filename)
             
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
             file.save(file_path)
+
+            file_type = None
+            if file.filename.lower().endswith(('.png', '.jpg', '.jpeg')):
+                file_type = 'image'
+            elif file.filename.lower().endswith('.pdf'):
+                file_type = 'pdf'
+            elif file.filename.lower().endswith('.docx'):
+                file_type = 'docx'
             
-            api = geminiApi()
-            api.configure()
-            textos = api.generate_user_story(file_path,description)
-            
-            session['textos'] = textos  # Almacenar en sesión
-            
-            return render_template('HU_imagen.html', form=form, textos=textos)
-    
+            if file_type:
+                api = geminiApi()
+                api.configure()
+                textos = api.generate_user_story(file_path, description, file_type)
+                
+                session['textos'] = textos  # Almacenar en sesión
+                
+                return render_template('HU_imagen.html', form=form, textos=textos)
+            else:
+                flash('Formato de archivo no soportado.', 'error')
+
     return render_template('HU_imagen.html', form=form, textos=None)
 
 @home_bp.route('/download_document/<format>', methods=['GET'])

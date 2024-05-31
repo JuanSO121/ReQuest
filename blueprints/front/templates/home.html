@@ -149,6 +149,30 @@
       border-left: 1px solid rgba(255, 255, 255, 0.126);
       border-right: 1px solid rgba(255, 255, 255, 0.126);
     }
+
+    .container2 {
+      width: 100%;
+      height: 100%;
+      --s: 200px; /* control the size */
+      --c1: #5c1b7e;
+      --c2: #ba37ff;
+      --c3: #9333ea;
+    
+      background: repeating-conic-gradient(
+            from 30deg,
+            #0000 0 120deg,
+            var(--c3) 0 180deg
+          )
+          calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
+        repeating-conic-gradient(
+          from 30deg,
+          var(--c1) 0 60deg,
+          var(--c2) 0 120deg,
+          var(--c3) 0 180deg
+        );
+      background-size: var(--s) calc(var(--s) * 0.577);
+    }
+    
   </style>
 
 </head>
@@ -186,69 +210,53 @@
 </div>
 
             
-        <div class="m-[0_0_103px_20.7px] flex flex-col items-center w-[fit-content] box-sizing-border">
-          <div class="m-[0_0_40px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
-            <div class="m-[0_14.4px_48px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
-              <span class="break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#F7F7F8]">
-              Automatizacion
-              </span>
-              <span class="m-[0_0.6px_0_0] break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#BC86FF]">
-              Workflow
-              </span>
-            </div>
-            <div class="flex flex-col items-center w-[fit-content] box-sizing-border">
-              <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#C9CCD2]">
-              Simplify website planning with our intuitive design tool. Bring your ideas to life
-              </span>
-              <span class="m-[0_2.8px_0_0] break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#C9CCD2]">
-              effortlessly and create stunning visuals.
-              </span>
-            </div>
-          </div>
-          <div class="m-[0_12.7px_0_0] flex w-[311.9px] box-sizing-border">
-            <div class="shadow-[inset_0px_1px_0px_0px_rgba(255,255,255,0.2),0px_1px_3px_0px_rgba(9,9,15,0.5),0px_1px_2px_0px_rgba(9,9,15,0.3)] rounded-[8px] bg-[#7A15FF] m-[0_12px_0_0] flex items-center justify-center p-[10px_3.7px_10px_0] w-[124px]">
-              <button class="break-words font-inter font-medium text-sm leading-[1.5] text-[#F7F7F8]">
-                Get Started
-              </button>
-            </div>
-            <div class="shadow-[0px_1px_3px_0px_rgba(9,9,15,0),0px_1px_2px_0px_rgba(9,9,15,0),inset_0px_1px_0px_0px_rgba(255,255,255,0)] rounded-[8px] flex items-center justify-between p-[10px_0] w-[176px]">
-              <div class="flex items-center">
-                <button class="break-words font-inter font-medium text-[13.5px] leading-[1.481] text-[#C9CCD2]">
-                  See how it works
-                </button>
-              </div>
-              <button class="flex items-center w-[7.5px] h-[13.8px]">
-                <img class="w-[7.5px] h-[13.8px]" src="static/vectors/vector_1_x2.svg" alt="Arrow Icon" />
-              </button>
-            </div>
-          </div>
-          
-        </div>
-        <div class="card shadow-[0px_1px_3px_0px_rgba(0,0,5,0.5),0px_1px_2px_0px_rgba(0,0,5,0.3)] rounded-[25px] bg-[#121218] m-[0_0_0_3px] w-[775px] h-[494px]">
-        </div>
+<div class="m-[0_0_103px_20.7px] flex flex-col items-center w-[fit-content] box-sizing-border">
+  <div class="m-[0_0_40px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
+    <div class="m-[0_14.4px_48px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
+      <span class="break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#F7F7F8]">
+      Automatización
+      </span>
+      <span class="m-[0_0.6px_0_0] break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#BC86FF]">
+      Workflow
+      </span>
+    </div>
+    <div class="flex flex-col items-center w-[fit-content] box-sizing-border">
+      <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#C9CCD2]">
+      Simplifica la planificación del sitio web con nuestra herramienta de diseño intuitiva. Da vida a tus ideas
+      </span>
+      <span class="m-[0_2.8px_0_0] break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#C9CCD2]">
+      sin esfuerzo y crea visuales impresionantes.
+      </span>
+    </div>
+  </div>
+</div>
+<div class="card shadow-[0px_1px_3px_0px_rgba(0,0,5,0.5),0px_1px_2px_0px_rgba(0,0,5,0.3)] rounded-[25px] bg-[#121218] m-[0_0_0_3px] w-[775px] h-[494px]">
+  <img src="static/uploads/portada2.jpg" alt="Portada" style="width: 100%; height: auto;">
+</div>
+
+</div>
+
+<div class="flex flex-col items-center p-4 box-sizing-border w-full">
+  <div class="bg-[#09090F] flex flex-col items-center p-[96px_24px_96px_24px] box-sizing-border">
+    <div class="m-[0_1.3px_14px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
+      <div class="m-[0_3.3px_24px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
+        <span class="break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#F7F7F8]">
+          Nuestros Procesos
+        </span>
+        <span class="m-[0_0_0_1.2px] break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#BC86FF]">
+          Automatizados
+        </span>
       </div>
-          
-          <div class="flex flex-col items-center p-4 box-sizing-border w-full">
-            <div class="bg-[#09090F] flex flex-col items-center p-[96px_24px_96px_24px] box-sizing-border">
-              <div class="m-[0_1.3px_64px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
-                <div class="m-[0_3.3px_24px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
-                  <span class="break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#F7F7F8]">
-                    Nuestros Procesos
-                  </span>
-                  <span class="m-[0_0_0_1.2px] break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#BC86FF]">
-                    Automatizados
-                  </span>
-                </div>
-                <div class="m-[0_0_0_17.7px] flex flex-col items-center w-[fit-content] box-sizing-border">
-                  <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
-                    Explore our essential tools for seamless website planning and design. Elevate
-                  </span>
-                  <span class="m-[0_56.5px_0_53.4px] break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
-                    your workflow with intuitive features and powerful capabilities.
-                  </span>
-                </div>
-              </div>
-              <div class="flex flex-row gap-12 w-[fit-content] box-sizing-border">
+      <div class="m-[0_0_0_17.7px] flex flex-col items-center w-[fit-content] box-sizing-border mb-12">
+        <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
+          Explora nuestras herramientas esenciales para una planificación y diseño de sitios web sin problemas. Eleva
+        </span>
+        <span class="m-[0_56.5px_0_53.4px] break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
+          tu flujo de trabajo con características intuitivas y capacidades poderosas.
+        </span>
+      </div>
+
+      <div class="flex flex-row gap-12 w-[fit-content] box-sizing-border">
           
                 <!-- Imagen a Historias de Usuario -->
                 <a href="HU_imagen" class="card">
@@ -264,8 +272,7 @@
                     <span class="title">Imagen a Historias de Usuario</span>
                     <div class="row row1">
                       <div class="item">
-                        <span class="big-text">2626</span>
-                        <span class="regular-text">UI elements</span>
+                        <span class="big-text">Transforma imágenes en historias de usuario efectivas para mejorar la planificación de proyectos.</span>
                       </div>
                     </div>
                   </div>
@@ -285,8 +292,7 @@
                     <span class="title">Clasificación de Requisitos</span>
                     <div class="row row1">
                       <div class="item">
-                        <span class="big-text">2626</span>
-                        <span class="regular-text">UI elements</span>
+                        <span class="big-text">Clasifica y organiza requisitos para una gestión de proyectos más eficiente.</span>
                       </div>
                     </div>
                   </div>
@@ -306,8 +312,7 @@
                     <span class="title">Priorización de Requisitos</span>
                     <div class="row row1">
                       <div class="item">
-                        <span class="big-text">2626</span>
-                        <span class="regular-text">UI elements</span>
+                        <span class="big-text">Prioriza los requisitos del proyecto para enfocarte en lo más importante primero.</span>
                       </div>
                     </div>
                   </div>
@@ -318,22 +323,22 @@
           </div>
           
           <div class="flex flex-col items-center p-[96px_4px_0_0] w-[1425px] box-sizing-border">
-            <div class="m-[0_0_107px_6px] flex flex-col items-center w-[fit-content] box-sizing-border">
+            <div class="m-[0_0_50px_6px] flex flex-col items-center w-[fit-content] box-sizing-border">
               <div class="m-[0_0_64px_17.4px] flex flex-col items-center w-[fit-content] box-sizing-border">
                 <div class="m-[0_28.3px_24px_0] flex flex-col items-center w-[fit-content] box-sizing-border">
                   <span class="break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#F7F7F8]">
-                  Your Website Planning 
+                    Planificación de tu Sitio Web
                   </span>
                   <span class="m-[0_0_0_7.6px] break-words font-['Inter'] font-semibold text-[35.6px] leading-[1.236] text-[#7A15FF]">
-                  Solution
+                    Solución
                   </span>
                 </div>
                 <div class="flex flex-col items-center w-[fit-content] box-sizing-border">
                   <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
-                  Unleash creativity effortlessly with our dynamic whiteboard. Collaborate seamlessly and
+                    Libera la creatividad sin esfuerzo con nuestro pizarrón dinámico. Colabora sin problemas y
                   </span>
                   <span class="m-[0_7.1px_0_0] break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
-                  visualize ideas in real-time with intuitive tools.
+                    visualiza ideas en tiempo real con herramientas intuitivas.
                   </span>
                 </div>
               </div>
@@ -359,7 +364,7 @@
                           problemas y visualiza ideas en tiempo real con herramientas intuitivas.
                         </span>
                         <span class="self-start break-words font-['Inter'] font-normal text-[15.4px] leading-[1.558] text-[#94989E]">
-                          Dale vida tus proyectos.
+                          Dale vida a tus proyectos.
                         </span>
                       </div>
                     </div>
@@ -371,18 +376,18 @@
                           </div>
                           <div class="m-[0_0_8px_0] flex box-sizing-border">
                             <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
-                            Key content mapping
+                              Mapeo de contenido clave
                             </span>
                           </div>
                           <div class="m-[0_3.2px_0_0] flex flex-col w-[fit-content] box-sizing-border">
                             <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
-                            Map essential content
+                              Mapea contenido esencial
                             </span>
                             <span class="break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
-                            efficiently for streamlined
+                              eficientemente para una organización
                             </span>
                             <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
-                            project organization.
+                              de proyectos simplificada.
                             </span>
                           </div>
                         </div>
@@ -390,17 +395,17 @@
                           <div class="m-[0_3px_11px_3px] flex self-start w-[18.8px] h-[18.7px] box-sizing-border">
                             <img class="w-[18.8px] h-[18.7px]" src="static/vectors/vector_x2.svg" />
                           </div>
-                          <div class="m-[0_0_8px_0] flex self-start box-sizing-border">
+                          <div                 class="m-[0_0_8px_0] flex self-start box-sizing-border">
                             <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
-                            Final edit control
+                              Control de edición final
                             </span>
                           </div>
                           <div class="flex flex-col w-[fit-content] box-sizing-border">
                             <span class="break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
-                            Control the ultimate edit for
+                              Controla la edición definitiva para
                             </span>
                             <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
-                            project perfection.
+                              perfección en el proyecto.
                             </span>
                           </div>
                         </div>
@@ -412,18 +417,18 @@
                           </div>
                           <div class="m-[0_0_8px_0] flex self-start box-sizing-border">
                             <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
-                            Optimize Planning
+                              Optimización de la Planificación
                             </span>
                           </div>
                           <div class="flex flex-col w-[fit-content] box-sizing-border">
                             <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
-                            Enhance plans for
+                              Mejora los planes para una
                             </span>
                             <span class="break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
-                            streamlined execution and
+                              ejecución simplificada y
                             </span>
                             <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
-                            success.
+                              éxito.
                             </span>
                           </div>
                         </div>
@@ -433,33 +438,44 @@
                           </div>
                           <div class="m-[0_10.7px_8px_0] flex box-sizing-border">
                             <span class="break-words font-['Inter'] font-medium text-[15.4px] leading-[1.558] text-[#F7F7F8]">
-                            Intelligent tagging
+                              Etiquetado Inteligente
                             </span>
                           </div>
                           <div class="flex flex-col w-[fit-content] box-sizing-border">
                             <span class="break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
-                            Efficiently organize with
+                              Organiza eficientemente con
                             </span>
                             <span class="m-[0_5.9px_0_0] break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
-                            smart, intuitive tagging
+                              etiquetado inteligente y
                             </span>
                             <span class="self-start break-words font-['Inter'] font-normal text-[13.5px] leading-[1.481] text-[#94989E]">
-                            solutions.
+                              soluciones intuitivas.
                             </span>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="shadow-[inset_1px_1px_0px_0px_rgba(255,255,255,0.05),0px_0px_0px_1px_rgba(9,9,15,0.698)] rounded-l-[8px] bg-[#212127] w-[503px] h-[606px]">
+                  <div class="container2 shadow-[inset_1px_1px_0px_0px_rgba(255,255,255,0.05),0px_0px_0px_1px_rgba(9,9,15,0.698)] rounded-l-[8px] bg-[#212127] w-[503px] h-[606px]">
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          
+          
         </div>
       </div>
     </div>
   </div>
   </body>
+
+  <footer class="bg-[#09090F] text-white py-4 text-center">
+    <p><strong>Juan Jose Sanchez 84874</strong></p>
+    <p><strong>Daniel Tamara Rivera 9150</strong></p>
+    <p><strong>Laura Tatiana Castaño Muñoz 91878</strong></p>
+  </footer>
+  
+  
+  
 </html>
