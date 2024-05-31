@@ -1,0 +1,4 @@
+**Historia de usuario 1:**
+* **Como** usuario, **quiero** generar un reporte personalizado que solo incluya la información que necesito **para** tomar decisiones informadas.
+**Historia de usuario 2:**
+* **Como** usuario, **quiero** filtrar los resultados de búsqueda durante una búsqueda **para** encontrar los elementos específicos que estoy buscando. **Además,** quiero poder ajustar los filtros fácilmente **para** optimizar mis resultados.
