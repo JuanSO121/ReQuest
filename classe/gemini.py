@@ -44,7 +44,7 @@ class geminiApi:
         response = self.model.generate_content(full_prompt)
         requisitos_usuario = response.text.split('\n')
         return [requisitos.strip() for requisitos in requisitos_usuario if requisitos.strip()]
-
+                
 
     def generate_classification_prioritization(self, text_R):
         estructura = 'Prioriza los siguientes requisitos según su importancia, enumerándolos del más importante al menos importante:'
