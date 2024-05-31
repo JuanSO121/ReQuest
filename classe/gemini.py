@@ -39,7 +39,7 @@ class geminiApi:
     #Metodos de obtención de información mediante texto con respecto a otras funcionalidades 
     def generate_requirements(self, info):
         prompt = info
-        estructura = 'Con esta estructura quiero 5 requisitos funcionales: [Sujeto]-[Acción]-[Valor]. y 5 requisitos no funcionales : [Condición]-[Sujeto]-[Acción]-[Objeto]-[Restricción] Con respecto a estas Historias de usuario,hazlo con un lenguaje natural usando articulos y pronombres en una frase, y ademas agregale despues del sujeto un "debe ser"  : '
+        estructura = 'Con esta estructura quiero 5 requisitos funcionales: [Sujeto]-[Acción]-[Valor]. y 5 requisitos no funcionales : [Condición]-[Sujeto]-[Acción]-[Objeto]-[Restricción] Con respecto a estas Historias de usuario,hazlo con un lenguaje natural usando articulos y pronombres en una frase, y ademas agregale despues del sujeto un "debe ser", si el texto no son historias de usuario claras sino otro texto diferente di que hay un error  : '
         full_prompt = f'{estructura} {prompt}'
         response = self.model.generate_content(full_prompt)
         requisitos_usuario = response.text.split('\n')
