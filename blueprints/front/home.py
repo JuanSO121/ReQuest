@@ -14,7 +14,32 @@ def home():
 
 @home_bp.route('/clasificacion', methods=['GET', 'POST'])
 def clasificacion():
-    return render_template('clasificacion.html')
+    form = MyFormDocument()
+    if form.validate_on_submit():
+        description = form.description.data
+        file = form.file.data
+        if not description:
+            flash('Por favor, proporcione una descripción.', 'error')
+        elif not file:
+            flash('Por favor, suba un documento.', 'error')
+        else:
+            filename = secure_filename(file.filename)
+            file_path = os.path.join(current_app.config['UPLOADED_DOCUMENTS_DEST'], filename)
+            
+            os.makedirs(os.path.dirname(file_path), exist_ok=True)
+            file.save(file_path)
+            
+            extractor = DocumentExtractor()
+            clasifica_requirements = extractor.clasification_requirements(file_path, description)
+            
+            if clasifica_requirements:
+                flash('Requisitos clasificados correctamente.', 'success')
+                session['textos'] = clasifica_requirements  # Almacenar en sesión
+                return render_template('clasificacion.html', form=form, textos=clasifica_requirements)
+            else:
+                flash('Error al procesar el documento.', 'error')
+    return render_template('clasificacion.html', form=form)
+
 
 @home_bp.route('/priorizacion', methods=['GET', 'POST'])
 def priorizacion():

@@ -72,28 +72,22 @@ class geminiApi:
         response = self.model.generate_content(full_prompt)
         return response.text
     
-    #Metodos de obtención de información mediante texto con respecto a otras funcionalidades 
-    def generate_requirements_functionality(self, info):
+     #Metodos de obtención de información mediante texto con respecto a otras funcionalidades 
+    def generate_requirements(self, info):
         prompt = info
-        estructura = 'Con esta estructura quiero 5 requisitos funcionales: [Sujeto]-[Acción]-[Valor]. Con respecto a estas Historias de usuario: '
+        estructura = 'Con esta estructura quiero 5 requisitos funcionales: [Sujeto]-[Acción]-[Valor]. y 5 requisitos no funcionales : [Condición]-[Sujeto]-[Acción]-[Objeto]-[Restricción] Con respecto a estas Historias de usuario,hazlo con un lenguaje natural usando articulos y pronombres en una frase, y ademas agregale despues del sujeto un "debe ser"  : '
         full_prompt = f'{estructura} {prompt}'
         response = self.model.generate_content(full_prompt)
-        return response.text
-    
-    def generate_requirements_functionality(self, info):
-        prompt = info
-        estructura = 'Con esta estructura quiero 5 Requerimientos No funcionales : [Condición]-[Sujeto]-[Acción]-[Objeto]-[Restricción]. Con respecto a estas Historias de usuario: '
-        full_prompt = f'{estructura} {prompt}'
-        response = self.model.generate_content(full_prompt)
-        return response.text
+        requisitos_usuario = response.text.split('\n')
+        return [requisitos.strip() for requisitos in requisitos_usuario if requisitos.strip()]
 
     def generate_classification_prioritization(self, text_R):
         estructura = 'Prioriza los siguientes requisitos según su importancia, enumerándolos del más importante al menos importante:'
         full_prompt = f'{estructura} {text_R}'
         response = self.model.generate_content(full_prompt)
         prioritization = response.text
-        print("Priorización de requisitos generada:")
-        print(prioritization)
+        #print("Priorización de requisitos generada:")
+        #print(prioritization)
 
         # Parsear la respuesta para obtener la lista de requisitos priorizados
         prioritized_requirements = [req.strip() for req in prioritization.split('\n') if req.strip()]

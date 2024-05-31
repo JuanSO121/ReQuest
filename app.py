@@ -1,5 +1,5 @@
 from flask import Flask
-from blueprints.index.index import index_bp
+
 from blueprints.front.home import home_bp  # Importa home_bp en lugar de app
 from extensions import configure_extensions
 
@@ -20,7 +20,7 @@ app.config['GENERATED_UPLOADS_FOLDER'] = 'uploads/generated'
 configure_extensions(app)
 
 # Blueprints modularizar código
-app.register_blueprint(index_bp)
+
 app.register_blueprint(home_bp)  # Registra el blueprint home_bp
 
 if __name__ =='__main__':   

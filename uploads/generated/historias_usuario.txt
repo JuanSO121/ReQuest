@@ -1,3 +1,0 @@
-1. El sistema debe generar un reporte que muestre únicamente los datos relevantes según los parámetros establecidos.
-2. Los usuarios deben tener la capacidad de aplicar filtros durante una búsqueda para refinar los resultados.
-3. Los usuarios deben poder eliminar los filtros aplicados durante una búsqueda para ajustar los resultados según sus necesidades.
