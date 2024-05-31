@@ -93,6 +93,25 @@ class DocumentExtractor:
         full_text = f"Descripción del usuario: {description}\n\n{text}"
         prioritized_requirements = self.geminiApi.generate_classification_prioritization(full_text)
         return prioritized_requirements
+    
+    def clasification_requirements(self, file_path, description):
+        file_extension = os.path.splitext(file_path)[1].lower()
+        if file_extension == '.pdf':
+            text = self.extract_text_from_pdf(file_path)
+        elif file_extension == '.docx':
+            text = self.extract_text_from_docx(file_path)
+        elif file_extension == '.txt':
+            text = self.extract_text_from_txt(file_path)
+        else:
+            return "Formato de archivo no soportado."
+
+        if not text:
+            return "No se pudo extraer texto del archivo."
+
+        # Incluir la descripción del usuario en la solicitud a la API de Gemini
+        full_text = f"Descripción del usuario: {description}\n\n{text}"
+        clasification_requirements = self.geminiApi.generate_requirements(full_text)
+        return clasification_requirements
 """
 extract = DocumentExtractor()
 

@@ -1,0 +1,12 @@
+**Requisitos Funcionales:**
+- El procesador debe ser potente.
+- La batería debe ser de larga duración.
+- El panel táctil debe ser preciso y receptivo.
+- La interfaz de usuario debe ser fácil de usar.
+- El software debe ser estable y fiable.
+**Requisitos No Funcionales:**
+- Bajo la condición de tareas exigentes, el procesador debe ejecutarlas con facilidad.
+- Bajo la condición de uso continuo, la batería debe mantener su productividad durante un periodo prolongado.
+- Bajo la condición de navegación, el panel táctil debe responder a los movimientos con precisión.
+- Bajo la condición de uso habitual, la interfaz de usuario debe permitir la navegación de forma intuitiva.
+- Bajo la condición de uso normal, el software debe funcionar sin fallos ni inestabilidades.
